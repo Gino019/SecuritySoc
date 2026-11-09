@@ -81,9 +81,6 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
           <span className="font-sans text-xl font-black text-slate-900 tracking-tight">
             Tacna <span className="text-red-600">SOC</span>
           </span>
-          <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-red-50 text-red-700 border border-red-200 font-bold">
-            LIVE SHIELD
-          </span>
         </div>
       </div>
 
@@ -172,25 +169,18 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         {/* Separator */}
         <div className="h-6 w-[1px] bg-slate-200 mx-1 hidden sm:block" />
 
-        {/* MODO PÚBLICO / INVITADO */}
+        {/* MODO NO AUTENTICADO / BOTÓN DE INGRESO */}
         {isGuest ? (
-          <div className="flex items-center gap-2">
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono bg-slate-100 text-slate-700 border border-slate-200 font-semibold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Modo Público</span>
-            </span>
-
-            {onOpenLoginModal && (
-              <button
-                id="topheader-login-btn"
-                onClick={onOpenLoginModal}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-xs hover:shadow-md transition-all cursor-pointer hover:scale-[1.02]"
-              >
-                <UserIcon className="w-3.5 h-3.5" />
-                <span>Iniciar Sesión / Registrarse</span>
-              </button>
-            )}
-          </div>
+          onOpenLoginModal && (
+            <button
+              id="topheader-login-btn"
+              onClick={onOpenLoginModal}
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-xs hover:shadow-md transition-all cursor-pointer hover:scale-[1.02]"
+            >
+              <UserIcon className="w-3.5 h-3.5" />
+              <span>Iniciar Sesión / Registrarse</span>
+            </button>
+          )
         ) : (
           /* MODO AUTENTICADO CON CUENTA REAL */
           <div className="flex items-center gap-2.5">
@@ -290,7 +280,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
                       className="w-full text-left px-2 py-1.5 rounded-lg text-xs text-red-600 hover:bg-red-50 flex items-center gap-2 font-medium cursor-pointer"
                     >
                       <LogOut className="w-3.5 h-3.5" />
-                      <span>Cerrar Sesión (Volver a Modo Público)</span>
+                      <span>Cerrar Sesión</span>
                     </button>
                   </div>
                 </div>
@@ -300,7 +290,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             {/* Botón Directo "Cerrar Sesión" */}
             <button
               onClick={onLogout}
-              title="Cerrar sesión y volver al Modo Público"
+              title="Cerrar sesión"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-600 hover:text-red-700 hover:bg-red-50 border border-slate-200 transition-colors text-xs font-semibold cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5 text-red-600" />

@@ -98,14 +98,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* Header & Risk Score Card */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-100 text-red-700 border border-red-200">
-              SOC Perimeter Live
-            </span>
-            <span className="text-xs font-mono text-slate-400">
-              Actualizado en tiempo real con Supabase
-            </span>
-          </div>
           <h2 className="font-sans text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
             Dashboard Ejecutivo &amp; KPIs de Ciberseguridad
           </h2>

@@ -197,29 +197,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </button>
           )}
 
-          {/* User mini status card with Logout or Public Mode */}
-          {isGuest ? (
-            <div className="p-3 rounded-2xl bg-gradient-to-br from-slate-50 to-red-50/40 border border-slate-200 space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center shrink-0">
-                  <Globe className="w-3.5 h-3.5 text-slate-600" />
-                </div>
-                <div className="overflow-hidden flex-1">
-                  <p className="text-xs font-bold text-slate-800 truncate">Modo Público</p>
-                  <p className="text-[10px] text-slate-500 truncate">Evaluador Invitado</p>
-                </div>
-              </div>
-              {onOpenLoginModal && (
-                <button
-                  onClick={onOpenLoginModal}
-                  className="w-full py-1.5 px-3 rounded-xl text-xs font-bold bg-red-600 hover:bg-red-700 text-white text-center transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
-                >
-                  <Lock className="w-3 h-3" />
-                  <span>Iniciar Sesión</span>
-                </button>
-              )}
-            </div>
-          ) : (
+          {/* User profile card when authenticated */}
+          {!isGuest && (
             <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-red-600 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
                 {currentUser.name
@@ -236,7 +215,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               {onLogout && (
                 <button
                   onClick={onLogout}
-                  title="Cerrar sesión (Volver a Modo Público)"
+                  title="Cerrar sesión"
                   className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
                 >
                   <LogOut className="w-4 h-4" />
