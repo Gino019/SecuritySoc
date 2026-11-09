@@ -561,10 +561,6 @@ export function LoginView({ onLogin, onClose, isModal = false }: LoginViewProps)
             </div>
           </div>
         </div>
-
-        <p className="text-center text-slate-500 text-xs mt-6 font-medium">
-          Universidad Privada de Tacna · FAING · EPIS · SI885 · 2026-I
-        </p>
       </div>
   );
 

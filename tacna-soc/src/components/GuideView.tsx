@@ -797,26 +797,6 @@ export const GuideView: React.FC<GuideViewProps> = ({ onNavigateTab, onOpenNewSc
           </div>
         </section>
       )}
-
-      {/* Academic / Project Credits Footer Card — Blanco y Rojo */}
-      <div className="rounded-3xl border border-red-200 bg-white p-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left shadow-xs mb-6">
-        <div>
-          <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
-            Universidad Privada de Tacna · FAING · EPIS
-          </h4>
-          <p className="text-xs text-slate-500 mt-1">
-            Asignatura: SI885 — Seguridad de la Información y Gestión de Vulnerabilidades (2026-I)
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold font-mono border border-red-200">
-            v2.1 SOC LIVE
-          </span>
-          <span className="px-3 py-1 rounded-full bg-red-50 text-red-600 text-xs font-bold font-mono border border-red-100">
-            Gemini 2.0 AI
-          </span>
-        </div>
-      </div>
     </div>
   );
 };

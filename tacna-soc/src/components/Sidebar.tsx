@@ -119,13 +119,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white" />
           </div>
           <div className="overflow-hidden">
-            <h1 className="font-sans font-bold text-[17px] text-slate-900 tracking-tight leading-snug truncate group-hover:text-red-700 transition-colors">
+            <h1 className="font-sans font-bold text-[18px] text-slate-900 tracking-tight leading-snug truncate group-hover:text-red-700 transition-colors">
               Tacna SOC
             </h1>
-            <p className="font-mono text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">
-              <span>PENTEST CORE</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
-            </p>
           </div>
         </button>
 
