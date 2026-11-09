@@ -259,4 +259,21 @@ Se consolidaron 4 mejoras fundamentales requeridas para despliegue y auditoría 
      `Gobierno`, `Educación`, `Salud`, `Finanzas`, `Tecnología / SaaS`, `E-Commerce / Retail`, `Corporativo / Empresa`, `Medios / Blog`, `General / Otro`.
    - Selector con opción `✨ Autodetectar (IA / Dominio)` que deduce el sector en tiempo real según el TLD y nombre de dominio.
 
+---
+
+## 8. Sincronización y Cierre de Requisitos (Noviembre 2026)
+
+- **Repositorio Oficial en GitHub**: [https://github.com/Gino019/SecuritySoc.git](https://github.com/Gino019/SecuritySoc.git) (`branch main`).
+- **Validación de Datos en Vivo con Supabase Cloud**:
+  - Proyecto Supabase: `https://zyjgfkqqiefydvevmfqh.supabase.co`
+  - Tablas sincronizadas y activas: `websites` (13 registros), `evaluations` (24 registros), `findings` (9 registros), `vulnerability_references` (8 registros), `system_users` (5 registros), `audit_logs` (66 registros con SHA-256).
+- **Cumplimiento Integral de los 6 Requisitos**:
+  - REQ-1 (CI/CD & Docs): `ci-cd-deploy.yml`, `generate-docs.yml` y 3 manuales en `docs/manuals/`.
+  - REQ-2 (Arquitectura DWH/Data Lake): Diagrama Mermaid C4 en `01-arquitectura-dwh-datalake.mmd`.
+  - REQ-3 (ETL Automatizado): `etl/main.py` (Python 3.12 incremental con extracción real y exportación de Esquema Estrella Kimball).
+  - REQ-4 (IaC & Costos): Terraform modular en `infra/` y reporte Infracost en `infra/COST_REPORT.md` ($0.00/mes Free Tier).
+  - REQ-5 (Diagramas de Procesos e Infraestructura): `02-proceso-automatizado-etl.mmd` y `03-infraestructura-cloud-iac.mmd`.
+  - REQ-6 (Suite BI de 6 Reportes): `ReportsView.tsx` y `DashboardView.tsx` con filtros por Año (2025/2026), Mes (01-12) y Día (01-31).
+
+
 
