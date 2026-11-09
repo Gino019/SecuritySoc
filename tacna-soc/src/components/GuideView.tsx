@@ -111,44 +111,249 @@ export const GuideView: React.FC<GuideViewProps> = ({ onNavigateTab, onOpenNewSc
         </div>
       </div>
 
-      {/* SECCIÓN 2: ESCALA DE CALIFICACIÓN DE SEGURIDAD (A - F) */}
-      <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xs space-y-4">
-        <div className="flex items-center gap-2">
-          <Activity className="w-5 h-5 text-red-600" />
-          <h3 className="text-base font-bold text-slate-900">
-            Escala de Calificación de Seguridad (A – F)
-          </h3>
+      {/* SECCIÓN 2: ESCALA DE CALIFICACIÓN DE SEGURIDAD (A - F) Y PONDERACIÓN */}
+      <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 shadow-xs space-y-6">
+        <div>
+          <div className="flex items-center gap-2">
+            <Activity className="w-5 h-5 text-red-600" />
+            <h3 className="text-base font-bold text-slate-900">
+              Escala de Calificación de Seguridad (A – F) y Ponderación de Puntos
+            </h3>
+          </div>
+          <p className="text-xs text-slate-500 mt-1">
+            El Security Score inicia en una base de 100 puntos y evalúa el blindaje perimetral según las cabeceras HTTP emitidas y los vectores de riesgo detectados.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-          <div className="p-3.5 rounded-2xl border border-emerald-200 bg-emerald-50/40 text-center space-y-1">
-            <div className="text-2xl font-black text-emerald-600 font-mono">A</div>
-            <div className="text-[11px] font-bold text-slate-800">90 - 100 pts</div>
-            <div className="text-[10px] text-emerald-700 font-medium">Excelente Seguridad</div>
+        {/* Grilla de Calificaciones con Requisitos y Contenido de Cada Letra */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+          <div className="p-4 rounded-2xl border border-emerald-300 bg-emerald-50/50 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-black text-emerald-600 font-mono">A</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-200/70 text-emerald-800 font-bold">90 - 100 pts</span>
+              </div>
+              <h4 className="text-xs font-bold text-emerald-950 mt-1">Excelente Seguridad</h4>
+            </div>
+            <div className="text-[11px] text-emerald-900 leading-relaxed border-t border-emerald-200/60 pt-2">
+              <p className="font-semibold text-emerald-950 mb-0.5">Qué la conforma:</p>
+              0 vulnerabilidades críticas y 0 altas. Dispone de HTTPS forzado, HSTS, política CSP y cookies con flags <span className="font-mono text-[10px]">HttpOnly</span> y <span className="font-mono text-[10px]">Secure</span>.
+            </div>
           </div>
 
-          <div className="p-3.5 rounded-2xl border border-teal-200 bg-teal-50/40 text-center space-y-1">
-            <div className="text-2xl font-black text-teal-600 font-mono">B</div>
-            <div className="text-[11px] font-bold text-slate-800">75 - 89 pts</div>
-            <div className="text-[10px] text-teal-700 font-medium">Seguro con Notas</div>
+          <div className="p-4 rounded-2xl border border-teal-300 bg-teal-50/50 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-black text-teal-600 font-mono">B</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-200/70 text-teal-800 font-bold">75 - 89 pts</span>
+              </div>
+              <h4 className="text-xs font-bold text-teal-950 mt-1">Seguro con Observaciones</h4>
+            </div>
+            <div className="text-[11px] text-teal-900 leading-relaxed border-t border-teal-200/60 pt-2">
+              <p className="font-semibold text-teal-950 mb-0.5">Qué la conforma:</p>
+              0 críticas, 0 altas. Presenta de 1 a 3 observaciones medias o bajas (ej. falta cabecera <span className="font-mono text-[10px]">X-Content-Type-Options</span> o divulgación de banner de servidor).
+            </div>
           </div>
 
-          <div className="p-3.5 rounded-2xl border border-amber-200 bg-amber-50/40 text-center space-y-1">
-            <div className="text-2xl font-black text-amber-600 font-mono">C</div>
-            <div className="text-[11px] font-bold text-slate-800">50 - 74 pts</div>
-            <div className="text-[10px] text-amber-700 font-medium">Riesgo Moderado</div>
+          <div className="p-4 rounded-2xl border border-amber-300 bg-amber-50/50 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-black text-amber-600 font-mono">C</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-200/70 text-amber-800 font-bold">50 - 74 pts</span>
+              </div>
+              <h4 className="text-xs font-bold text-amber-950 mt-1">Riesgo Moderado</h4>
+            </div>
+            <div className="text-[11px] text-amber-900 leading-relaxed border-t border-amber-200/60 pt-2">
+              <p className="font-semibold text-amber-950 mb-0.5">Qué la conforma:</p>
+              0 críticas, pero presenta 1 o 2 defectos de severidad alta (ej. ausencia total de CSP frente a XSS o falta de HSTS en portal con login).
+            </div>
           </div>
 
-          <div className="p-3.5 rounded-2xl border border-orange-200 bg-orange-50/40 text-center space-y-1">
-            <div className="text-2xl font-black text-orange-600 font-mono">D</div>
-            <div className="text-[11px] font-bold text-slate-800">30 - 49 pts</div>
-            <div className="text-[10px] text-orange-700 font-medium">Alto Riesgo</div>
+          <div className="p-4 rounded-2xl border border-orange-300 bg-orange-50/50 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-black text-orange-600 font-mono">D</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-orange-200/70 text-orange-800 font-bold">30 - 49 pts</span>
+              </div>
+              <h4 className="text-xs font-bold text-orange-950 mt-1">Alto Riesgo</h4>
+            </div>
+            <div className="text-[11px] text-orange-900 leading-relaxed border-t border-orange-200/60 pt-2">
+              <p className="font-semibold text-orange-950 mb-0.5">Qué la conforma:</p>
+              Acumula más de 2 fallos de severidad alta simultáneos (sin CSP, sin HSTS y cookies de sesión expuestas a robo directo vía JavaScript).
+            </div>
           </div>
 
-          <div className="p-3.5 rounded-2xl border border-rose-200 bg-rose-50/40 text-center space-y-1 col-span-2 sm:col-span-1">
-            <div className="text-2xl font-black text-rose-600 font-mono">F</div>
-            <div className="text-[11px] font-bold text-slate-800">&lt; 30 pts</div>
-            <div className="text-[10px] text-rose-700 font-medium">Crítico / Inseguro</div>
+          <div className="p-4 rounded-2xl border border-rose-300 bg-rose-50/50 flex flex-col justify-between space-y-2">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-black text-rose-600 font-mono">F</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-200/70 text-rose-800 font-bold">&lt; 30 pts</span>
+              </div>
+              <h4 className="text-xs font-bold text-rose-950 mt-1">Crítico / Inseguro</h4>
+            </div>
+            <div className="text-[11px] text-rose-900 leading-relaxed border-t border-rose-200/60 pt-2">
+              <p className="font-semibold text-rose-950 mb-0.5">Qué la conforma:</p>
+              Cualquier sitio web con al menos 1 vulnerabilidad Crítica (CVE conocido de RCE / SQLi, o conexión sin HTTPS transmitiendo credenciales en texto claro).
+            </div>
+          </div>
+        </div>
+
+        {/* Tabla Detallada: Ponderación de Puntos y Controles Evaluados */}
+        <div className="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50/50">
+          <div className="bg-slate-100/80 px-4 py-2.5 border-b border-slate-200">
+            <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+              Ponderación del Motor de Escaneo (Puntos por Control y Penalizaciones)
+            </h4>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs">
+              <thead className="bg-slate-100/40 text-slate-500 font-mono text-[11px] border-b border-slate-200">
+                <tr>
+                  <th className="py-2.5 px-4 font-bold">Control / Cabecera Evaluada</th>
+                  <th className="py-2.5 px-3 font-bold text-center">Puntos que Aporta</th>
+                  <th className="py-2.5 px-3 font-bold text-center">Penalización si Falta</th>
+                  <th className="py-2.5 px-4 font-bold">Impacto en la Seguridad</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200/70 text-slate-700">
+                <tr className="hover:bg-white/80 transition-colors">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-900">Protocolo HTTPS / TLS Cifrado</span>
+                    <span className="block text-[11px] text-slate-500 font-mono">Puerto 443 con certificado válido</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-emerald-600">+30 pts</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-rose-600">-30 pts (Nota F)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Evita intercepción de credenciales en redes públicas (Man-in-the-Middle).</td>
+                </tr>
+
+                <tr className="hover:bg-white/80 transition-colors">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-900">Strict-Transport-Security (HSTS)</span>
+                    <span className="block text-[11px] text-slate-500 font-mono">max-age=31536000; includeSubDomains</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-emerald-600">+15 pts</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-orange-600">-15 pts (Alta)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Fuerza a los navegadores a conectarse solo por HTTPS, impidiendo ataques de downgrade.</td>
+                </tr>
+
+                <tr className="hover:bg-white/80 transition-colors">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-900">Content-Security-Policy (CSP)</span>
+                    <span className="block text-[11px] text-slate-500 font-mono">default-src 'self'; script-src ...</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-emerald-600">+15 pts</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-orange-600">-15 pts (Alta)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Restringe los orígenes autorizados para scripts; bloquea ataques Cross-Site Scripting (XSS).</td>
+                </tr>
+
+                <tr className="hover:bg-white/80 transition-colors">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-900">X-Frame-Options</span>
+                    <span className="block text-[11px] text-slate-500 font-mono">DENY o SAMEORIGIN</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-emerald-600">+10 pts</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-amber-600">-8 pts (Media)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Impide que atacantes embeban el portal en iframes invisibles para secuestro de clics (Clickjacking).</td>
+                </tr>
+
+                <tr className="hover:bg-white/80 transition-colors">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-900">X-Content-Type-Options</span>
+                    <span className="block text-[11px] text-slate-500 font-mono">nosniff</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-emerald-600">+10 pts</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-amber-600">-8 pts (Media)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Evita que el navegador ejecute archivos con tipos MIME incorrectos o disfrazados de imágenes.</td>
+                </tr>
+
+                <tr className="hover:bg-white/80 transition-colors">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-900">Directivas Seguras de Cookies</span>
+                    <span className="block text-[11px] text-slate-500 font-mono">HttpOnly; Secure; SameSite</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-emerald-600">+10 pts</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-amber-600">-8 pts (Media)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Impide la lectura de la cookie de sesión desde JavaScript y restringe el envío por canal no cifrado.</td>
+                </tr>
+
+                <tr className="hover:bg-white/80 transition-colors">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-900">Ocultamiento de Cabeceras Informativas</span>
+                    <span className="block text-[11px] text-slate-500 font-mono">Server / X-Powered-By</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-emerald-600">+10 pts</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-500">-3 pts (Baja)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Oculta versiones de software (Apache, PHP) reduciendo el reconocimiento inicial a atacantes.</td>
+                </tr>
+
+                {/* Penalizaciones por Severidad de Hallazgos */}
+                <tr className="bg-red-50/40">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-red-950 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-red-600 inline-block"></span>
+                      Vulnerabilidad Crítica detectada (CVE / Sin HTTPS)
+                    </span>
+                    <span className="block text-[11px] text-red-800/80 font-mono">CVSS 9.0 - 10.0 / RCE, SQLi, Auth Bypass</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-400">--</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-red-600">-25 a -30 pts (Nota F)</td>
+                  <td className="py-2.5 px-4 text-[11px] text-red-900">Riesgo inminente de compromiso. Degrada automáticamente la calificación perimetral a <strong>F</strong>.</td>
+                </tr>
+
+                <tr className="bg-orange-50/40">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-orange-950 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-orange-500 inline-block"></span>
+                      Vulnerabilidad Alta detectada
+                    </span>
+                    <span className="block text-[11px] text-orange-800/80 font-mono">CVSS 7.0 - 8.9 / Sin CSP, Sin HSTS</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-400">--</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-orange-600">-15 pts c/u</td>
+                  <td className="py-2.5 px-4 text-[11px] text-orange-900">Permite ataques de inyección o degradación SSL. Más de 2 fallos altos reducen la nota a <strong>D</strong>.</td>
+                </tr>
+
+                <tr className="bg-amber-50/40">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-amber-950 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>
+                      Vulnerabilidad Media detectada
+                    </span>
+                    <span className="block text-[11px] text-amber-800/80 font-mono">CVSS 4.0 - 6.9 / X-Frame, MIME sniffing, Cookies</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-400">--</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-amber-600">-8 pts c/u</td>
+                  <td className="py-2.5 px-4 text-[11px] text-amber-900">Exposición a Clickjacking o lectura de cookies. Si acumula más de 3 medias, califica como <strong>B</strong> o <strong>C</strong>.</td>
+                </tr>
+
+                <tr className="bg-slate-50/60">
+                  <td className="py-2.5 px-4 font-medium">
+                    <span className="font-bold text-slate-800 flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-slate-400 inline-block"></span>
+                      Vulnerabilidad Baja / Informativa
+                    </span>
+                    <span className="block text-[11px] text-slate-500 font-mono">CVSS 0.1 - 3.9 / Server Banner disclosure</span>
+                  </td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-400">--</td>
+                  <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-600">-3 pts c/u</td>
+                  <td className="py-2.5 px-4 text-[11px] text-slate-600">Divulgación de versiones o cabeceras informativas sin vector de explotación directa.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Banner de Fórmula de Cálculo */}
+          <div className="p-3.5 bg-slate-100/70 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-slate-800 font-mono">Fórmula SOC:</span>
+              <span className="font-mono text-[11px] text-slate-600 bg-white px-2.5 py-1 rounded-lg border border-slate-200">
+                Score = 100 − (Críticas × 25) − (Altas × 15) − (Medias × 8) − (Bajas × 3) − (30 si falta HTTPS)
+              </span>
+            </div>
+            <span className="text-[11px] text-slate-500 italic">
+              Base 100 pts · Mínimo 15 pts · Máximo 98 pts
+            </span>
           </div>
         </div>
       </div>
