@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Lock } from 'lucide-react';
 import { Sidebar } from './components/Sidebar';
 import { TopHeader } from './components/TopHeader';
 import { PentestScanView } from './components/PentestScanView';
@@ -83,19 +84,22 @@ export default function App({ authUser, onLoginUser, onLogout }: AppProps) {
         'data-sources', 'user-management', 'audit-logs', 'settings', 'guide'
       ];
       if (savedTab && validTabs.includes(savedTab)) {
+        if (isGuest && (savedTab === 'admin' || savedTab === 'user-management' || savedTab === 'audit-logs' || savedTab === 'data-sources' || savedTab === 'settings')) {
+          return 'dashboard';
+        }
         if (savedTab === 'websites') {
           return 'dashboard';
         }
         if (savedTab === 'evaluaciones' || savedTab === 'evaluations') {
           return 'scanner';
         }
-        if (savedTab === 'user-management' || savedTab === 'audit-logs' || savedTab === 'data-sources' || savedTab === 'settings' || savedTab === 'guide') {
+        if (savedTab === 'user-management' || savedTab === 'audit-logs' || savedTab === 'data-sources' || savedTab === 'settings') {
           return 'admin';
         }
         return savedTab;
       }
     } catch {}
-    return 'scanner';
+    return 'dashboard';
   });
   const [selectedSiteId, setSelectedSiteId] = useState<string | null>(null);
   const [selectedVulnCve, setSelectedVulnCve] = useState<string | null>(null);
@@ -652,14 +656,20 @@ export default function App({ authUser, onLoginUser, onLogout }: AppProps) {
 
   // ─── Role-based tab restrictions ─────────────────────────────────────────
   const getAllowedTabs = (role?: AuthUser['role']): NavigationTab[] => {
-    if (role === 'Auditor') return ['scanner', 'reports', 'admin', 'dashboard', 'audit-logs', 'guide'];
-    if (role === 'Operator') return ['scanner', 'vulnerabilities', 'admin', 'dashboard', 'websites', 'guide'];
+    // Si no está registrado (modo público/invitado), solo puede ver las vistas operativas públicas
+    if (isGuest) {
+      return ['dashboard', 'scanner', 'vulnerabilities', 'reports', 'guide'];
+    }
+    if (role === 'Auditor') return ['dashboard', 'scanner', 'reports', 'admin', 'audit-logs', 'guide'];
+    if (role === 'Operator') return ['dashboard', 'scanner', 'vulnerabilities', 'reports', 'websites', 'guide'];
+    if (role === 'Security Analyst') return ['dashboard', 'scanner', 'vulnerabilities', 'reports', 'admin', 'data-sources', 'guide'];
+    // Super Admin: Acceso total a todas las vistas
     return [
+      'dashboard',
       'scanner',
       'vulnerabilities',
       'reports',
       'admin',
-      'dashboard',
       'websites',
       'evaluaciones',
       'evaluations',
@@ -673,18 +683,24 @@ export default function App({ authUser, onLoginUser, onLogout }: AppProps) {
 
   const allowedTabs = getAllowedTabs(currentUser?.role || safeAuthRole);
 
-  // Validate currentTab against allowedTabs when role changes
+  // Validate currentTab against allowedTabs when role or session changes
   React.useEffect(() => {
     if (!allowedTabs.includes(currentTab) && currentTab !== 'evaluaciones' && currentTab !== 'evaluations') {
-      setCurrentTab('scanner');
+      setCurrentTab('dashboard');
       try {
-        localStorage.setItem('tacna_soc_active_tab', 'scanner');
+        localStorage.setItem('tacna_soc_active_tab', 'dashboard');
       } catch {}
     }
-  }, [currentUser?.role, safeAuthRole]);
+  }, [currentUser?.role, safeAuthRole, isGuest, allowedTabs]);
 
   const handleTabChange = (tab: NavigationTab) => {
-    if (!allowedTabs.includes(tab)) return;
+    if (!allowedTabs.includes(tab)) {
+      if (isGuest && (tab === 'admin' || tab === 'user-management' || tab === 'audit-logs' || tab === 'settings' || tab === 'data-sources')) {
+        setIsLoginModalOpen(true);
+        showToast('Debes iniciar sesión con una cuenta autorizada para acceder a esta sección.');
+      }
+      return;
+    }
     setCurrentTab(tab);
     setSelectedSiteId(null);
     setSelectedVulnCve(null);
@@ -736,15 +752,21 @@ export default function App({ authUser, onLoginUser, onLogout }: AppProps) {
           onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           onSelectUserRole={handleSelectUserRole}
           onOpenAuditLogs={() => {
+            if (isGuest) {
+              setIsLoginModalOpen(true);
+              showToast('Debes iniciar sesión como Auditor o Super Admin para inspeccionar la auditoría.');
+              return;
+            }
             setCurrentTab('admin');
             setFilterActorEmail(null);
           }}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           onLogout={handleLogoutApp}
-          onOpenGuide={() => setCurrentTab('admin')}
+          onOpenGuide={() => setCurrentTab('guide')}
           isGuest={isGuest}
           onOpenLoginModal={() => setIsLoginModalOpen(true)}
+          onNavigateHome={() => handleTabChange('dashboard')}
         />
 
         {/* Content Area with top header padding & comfortable bottom scrolling */}
@@ -813,8 +835,8 @@ export default function App({ authUser, onLoginUser, onLogout }: AppProps) {
             />
           )}
 
-          {/* Central Admin & Governance Hub */}
-          {(currentTab === 'admin' || currentTab === 'data-sources' || currentTab === 'user-management' || currentTab === 'audit-logs' || currentTab === 'settings' || currentTab === 'guide') && (
+          {/* Central Admin & Governance Hub - Protegido: Solo usuarios registrados */}
+          {!isGuest && (currentTab === 'admin' || currentTab === 'data-sources' || currentTab === 'user-management' || currentTab === 'audit-logs' || currentTab === 'settings') && (
             <AdminHubView
               users={users}
               onOpenNewUserModal={() => setIsNewUserModalOpen(true)}
@@ -851,10 +873,36 @@ export default function App({ authUser, onLoginUser, onLogout }: AppProps) {
                 currentTab === 'user-management' ? 'users' :
                 currentTab === 'data-sources' ? 'datasources' :
                 currentTab === 'audit-logs' ? 'audit' :
-                currentTab === 'settings' ? 'settings' :
-                currentTab === 'guide' ? 'guide' : 'users'
+                currentTab === 'settings' ? 'settings' : 'users'
               }
             />
+          )}
+
+          {/* Guía Técnica (Accesible para todos los usuarios) */}
+          {currentTab === 'guide' && (
+            <GuideView
+              onNavigateTab={(tab) => handleTabChange(tab)}
+              onOpenNewScan={() => handleTabChange('scanner')}
+            />
+          )}
+
+          {/* Barrera de seguridad si un usuario no autenticado intenta forzar la ruta de administración */}
+          {isGuest && (currentTab === 'admin' || currentTab === 'data-sources' || currentTab === 'user-management' || currentTab === 'audit-logs' || currentTab === 'settings') && (
+            <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-lg mx-auto shadow-sm my-12 space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mx-auto">
+                <Lock className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">Acceso Administrativo Restringido</h3>
+              <p className="text-sm text-slate-500">
+                Esta sección requiere credenciales con privilegios de gestión (Super Admin, Analista o Auditor).
+              </p>
+              <button
+                onClick={() => setIsLoginModalOpen(true)}
+                className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all cursor-pointer shadow-sm"
+              >
+                Iniciar Sesión con Cuenta Autorizada
+              </button>
+            </div>
           )}
         </main>
       </div>

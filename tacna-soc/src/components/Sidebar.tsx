@@ -108,14 +108,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
         fixed left-0 top-0 h-full w-[260px] bg-white border-r border-slate-200 flex flex-col py-6 z-50 transition-transform duration-200 ease-in-out shadow-sm
         ${isOpenMobile ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
       `}>
-        {/* Brand Header with White + Crimson Red */}
-        <div className="px-5 mb-6 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center relative shadow-sm shrink-0">
+        {/* Brand Header with White + Crimson Red - Clic para ir al Menú Principal */}
+        <button
+          onClick={() => handleNavClick('dashboard')}
+          className="w-full px-5 mb-6 flex items-center gap-3 text-left cursor-pointer hover:opacity-85 transition-opacity group focus:outline-none"
+          title="Ir al Menú Principal (Dashboard)"
+        >
+          <div className="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center relative shadow-sm shrink-0 group-hover:scale-105 transition-transform">
             <ShieldCheck className="w-6 h-6 text-white" />
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white" />
           </div>
           <div className="overflow-hidden">
-            <h1 className="font-sans font-bold text-[17px] text-slate-900 tracking-tight leading-snug truncate">
+            <h1 className="font-sans font-bold text-[17px] text-slate-900 tracking-tight leading-snug truncate group-hover:text-red-700 transition-colors">
               Tacna SOC
             </h1>
             <p className="font-mono text-[10px] text-red-600 font-bold uppercase tracking-wider flex items-center gap-1">
@@ -123,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
             </p>
           </div>
-        </div>
+        </button>
 
         {/* Primary Navigation List: 3 Secciones Clave estilo PentestNet */}
         <div className="flex-1 overflow-y-auto px-3 space-y-1">
@@ -175,8 +179,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Bottom Section: Admin / Ajustes Hub & User Card */}
         <div className="px-3 pt-3 border-t border-slate-200 space-y-2 mt-auto">
-          {/* Botón Discreto de Administración / Gobernanza */}
-          {isAllowed('admin') && (
+          {/* Botón Discreto de Administración / Gobernanza (Solo usuarios autenticados con permiso) */}
+          {!isGuest && isAllowed('admin') && (
             <button
               onClick={() => handleNavClick('admin')}
               className={`

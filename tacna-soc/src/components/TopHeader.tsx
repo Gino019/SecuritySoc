@@ -25,6 +25,7 @@ interface TopHeaderProps {
   onOpenGuide?: () => void;
   isGuest?: boolean;
   onOpenLoginModal?: () => void;
+  onNavigateHome?: () => void;
 }
 
 export const TopHeader: React.FC<TopHeaderProps> = ({
@@ -37,7 +38,8 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   onLogout,
   onOpenGuide,
   isGuest = false,
-  onOpenLoginModal
+  onOpenLoginModal,
+  onNavigateHome
 }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -77,11 +79,15 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
         >
           <Menu className="w-5 h-5" />
         </button>
-        <div className="flex items-center gap-2">
-          <span className="font-sans text-xl font-black text-slate-900 tracking-tight">
+        <button
+          onClick={onNavigateHome}
+          className="flex items-center gap-2 cursor-pointer hover:opacity-85 transition-opacity text-left focus:outline-none group"
+          title="Ir al Menú Principal (Dashboard)"
+        >
+          <span className="font-sans text-xl font-black text-slate-900 tracking-tight group-hover:text-red-700 transition-colors">
             Tacna <span className="text-red-600">SOC</span>
           </span>
-        </div>
+        </button>
       </div>
 
       {/* Center Search Input */}

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   Users, 
   ScrollText, 
   Database, 
   Settings, 
   BookOpen, 
-  SlidersHorizontal
+  SlidersHorizontal,
+  ShieldAlert
 } from 'lucide-react';
 import { SystemUser, DataSourceItem, AuditLogItem, NavigationTab } from '../types';
 import { UserManagementView } from './UserManagementView';
@@ -61,13 +62,38 @@ export const AdminHubView: React.FC<AdminHubViewProps> = ({
 }) => {
   const [activeSubTab, setActiveSubTab] = useState<AdminSubTab>(initialSubTab);
 
-  const subTabs = [
+  // RBAC para subpestañas según los 4 roles formales del FD03 SRS
+  const allowedSubTabs = useMemo<AdminSubTab[]>(() => {
+    switch (currentUser.role) {
+      case 'Super Admin':
+        // Acceso total a todas las herramientas administrativas
+        return ['users', 'datasources', 'audit', 'settings', 'guide'];
+      case 'Security Analyst':
+        // Solo fuentes de ciberinteligencia y documentación técnica (NO usuarios ni API keys)
+        return ['datasources', 'guide'];
+      case 'Auditor':
+        // Solo bitácora inmutable de auditoría y documentación técnica (NO usuarios ni API keys)
+        return ['audit', 'guide'];
+      case 'Operator':
+        // Solo documentación técnica
+        return ['guide'];
+      default:
+        return ['guide'];
+    }
+  }, [currentUser.role]);
+
+  // Si la subpestaña actual no está autorizada para el rol, seleccionar la primera permitida
+  const currentSafeSubTab = allowedSubTabs.includes(activeSubTab) ? activeSubTab : (allowedSubTabs[0] || 'guide');
+
+  const allSubTabs = [
     { id: 'users' as const, label: 'Usuarios & Roles', icon: Users, badge: `${users.length}` },
     { id: 'datasources' as const, label: 'Fuentes & Threat Intel', icon: Database, badge: 'NVD/NIST' },
     { id: 'audit' as const, label: 'Auditoría SHA-256', icon: ScrollText, badge: 'Inmutable' },
     { id: 'settings' as const, label: 'Ajustes & API Key', icon: Settings, badge: 'Config' },
     { id: 'guide' as const, label: 'Manual & Guía', icon: BookOpen, badge: 'Doc' },
   ];
+
+  const visibleSubTabs = allSubTabs.filter(tab => allowedSubTabs.includes(tab.id));
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
@@ -82,8 +108,8 @@ export const AdminHubView: React.FC<AdminHubViewProps> = ({
               <h2 className="text-xl font-bold text-slate-900 tracking-tight">
                 Centro de Administración y Gobernanza SOC
               </h2>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200 font-bold">
-                Control Central
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-red-50 text-red-700 border border-red-200 font-bold">
+                Rol: {currentUser.role}
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -92,11 +118,11 @@ export const AdminHubView: React.FC<AdminHubViewProps> = ({
           </div>
         </div>
 
-        {/* Sub-Tabs Pills */}
+        {/* Sub-Tabs Pills Filtradas por Permisos de Rol */}
         <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200/80">
-          {subTabs.map((tab) => {
+          {visibleSubTabs.map((tab) => {
             const Icon = tab.icon;
-            const isActive = activeSubTab === tab.id;
+            const isActive = currentSafeSubTab === tab.id;
             return (
               <button
                 key={tab.id}
@@ -122,20 +148,30 @@ export const AdminHubView: React.FC<AdminHubViewProps> = ({
         </div>
       </div>
 
-      {/* Sub-View Content */}
+      {/* Sub-View Content Protegido por Rol */}
       <div className="transition-all duration-150">
-        {activeSubTab === 'users' && (
-          <UserManagementView
-            users={users}
-            onOpenNewUserModal={onOpenNewUserModal}
-            onToggleUserStatus={onToggleUserStatus}
-            onUpdateRole={onUpdateRole}
-            onViewUserAuditLogs={onViewUserAuditLogs}
-            onUpdatePassword={onUpdatePassword}
-          />
+        {currentSafeSubTab === 'users' && (
+          currentUser.role === 'Super Admin' ? (
+            <UserManagementView
+              users={users}
+              onOpenNewUserModal={onOpenNewUserModal}
+              onToggleUserStatus={onToggleUserStatus}
+              onUpdateRole={onUpdateRole}
+              onViewUserAuditLogs={onViewUserAuditLogs}
+              onUpdatePassword={onUpdatePassword}
+            />
+          ) : (
+            <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center shadow-xs">
+              <ShieldAlert className="w-12 h-12 text-red-500 mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-slate-900">Acceso Restringido</h3>
+              <p className="text-sm text-slate-500 max-w-md mx-auto mt-1">
+                La administración de usuarios y perfiles está reservada exclusivamente para el perfil Super Admin.
+              </p>
+            </div>
+          )
         )}
 
-        {activeSubTab === 'datasources' && (
+        {currentSafeSubTab === 'datasources' && allowedSubTabs.includes('datasources') && (
           <DataSourcesView
             dataSources={dataSources}
             onSyncSource={onSyncSource}
@@ -143,7 +179,7 @@ export const AdminHubView: React.FC<AdminHubViewProps> = ({
           />
         )}
 
-        {activeSubTab === 'audit' && (
+        {currentSafeSubTab === 'audit' && allowedSubTabs.includes('audit') && (
           <AuditLogsView
             logs={auditLogs}
             filterActor={filterActorEmail || undefined}
@@ -153,14 +189,24 @@ export const AdminHubView: React.FC<AdminHubViewProps> = ({
           />
         )}
 
-        {activeSubTab === 'settings' && (
-          <SettingsView
-            currentUser={currentUser}
-            onSaveSettingsNotification={onSaveSettingsNotification}
-          />
+        {currentSafeSubTab === 'settings' && (
+          currentUser.role === 'Super Admin' ? (
+            <SettingsView
+              currentUser={currentUser}
+              onSaveSettingsNotification={onSaveSettingsNotification}
+            />
+          ) : (
+            <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center shadow-xs">
+              <ShieldAlert className="w-12 h-12 text-red-500 mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-slate-900">Acceso Restringido</h3>
+              <p className="text-sm text-slate-500 max-w-md mx-auto mt-1">
+                La configuración global del sistema y API Keys está reservada para el perfil Super Admin.
+              </p>
+            </div>
+          )
         )}
 
-        {activeSubTab === 'guide' && (
+        {currentSafeSubTab === 'guide' && (
           <GuideView
             onNavigateTab={onNavigateTab}
             onOpenNewScan={onOpenNewScan}
