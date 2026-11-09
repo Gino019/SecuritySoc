@@ -1,0 +1,8 @@
+version: 0.1
+
+projects:
+  - path: infra
+    name: tacna-soc-gcp-infrastructure
+    terraform_var_files:
+      - terraform.tfvars.example
+

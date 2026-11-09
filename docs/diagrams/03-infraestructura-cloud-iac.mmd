@@ -1,0 +1,95 @@
+graph TB
+    %% ─────────────────────────────────────────────────────────────
+    %% ZONA 1: CI/CD Y GITHUB ACTIONS
+    %% ─────────────────────────────────────────────────────────────
+    subgraph GITHUB["1. Entorno de Desarrollo y CI/CD (GitHub)"]
+        direction TB
+        REPO["Repositorio Git:<br/>si885-2026-ii-proyecto-group-5"]
+        
+        subgraph WF["GitHub Actions Workflows (.github/workflows/)"]
+            WF_BUILD["ci-cd-deploy.yml<br/>(Lint, Build, Docker Build & Deploy)"]
+            WF_DOCS["generate-docs.yml<br/>(Mermaid CLI & Auto Manuals Generator)"]
+            WF_ETL["etl-pipeline.yml<br/>(Cron Diario & Manual Dispatch con Dry-Run)"]
+        end
+
+        IAC_CODE["Codigo Terraform (infra/)<br/>versions.tf, main.tf, variables.tf,<br/>storage.tf, bigquery.tf, cloud_run.tf"]
+        INFRACOST["Infracost CLI (infracost.yml)<br/>Reporte Preventivo de Costos ($0.00/mes)"]
+
+        REPO --> WF
+        REPO --> IAC_CODE
+        IAC_CODE --> INFRACOST
+    end
+
+    %% ─────────────────────────────────────────────────────────────
+    %% ZONA 2: GOOGLE CLOUD PLATFORM INFRASTRUCTURE
+    %% ─────────────────────────────────────────────────────────────
+    subgraph GCP["2. Google Cloud Platform (Region: us-central1 - Always Free Tier)"]
+        direction TB
+
+        subgraph IAM["Seguridad e Identidad (IAM)"]
+            SA_WEB["Service Account:<br/>tacna-soc-web-sa<br/>(Cloud Run Invoker, Minimal)"]
+            SA_ETL["Service Account:<br/>tacna-soc-etl-sa<br/>(BigQuery Admin, Storage Admin)"]
+        end
+
+        subgraph AR["Registro de Contenedores (Artifact Registry)"]
+            IMG_WEB["Docker Image:<br/>tacna-soc-web:latest<br/>(Node 20 Alpine Multi-stage)"]
+            IMG_ETL["Docker Image:<br/>tacna-soc-etl:latest<br/>(Python 3.12 + Pandas)"]
+        end
+
+        subgraph COMPUTE["Computo Serverless (Cloud Run)"]
+            CR_WEB["Cloud Run Service:<br/>tacna-soc-web<br/>(React 19 + Express API, Puerto 8080)<br/>Auto-scaling 0..10 instancias"]
+            CR_JOB["Cloud Run Job:<br/>tacna-soc-etl<br/>(Contenedor de ejecucion batch)"]
+        end
+
+        subgraph SCHED["Orquestacion de Tiempos (Cloud Scheduler)"]
+            SCHEDULER["Cloud Scheduler:<br/>tacna-soc-etl-daily<br/>(cron: '0 2 * * *' - 02:00 UTC)"]
+        end
+
+        subgraph STORAGE["Almacenamiento Masivo (Data Lake)"]
+            GCS_BUCKET["Cloud Storage (GCS):<br/>gs://tacna-soc-raw-data-lake<br/>(Archivos Raw JSON / Parquet)"]
+        end
+
+        subgraph DWH["Data Warehouse Analitico (BigQuery)"]
+            BQ_DATASET["BigQuery Dataset:<br/>tacna_soc_dwh<br/>(Particionado diario + Clustering)"]
+            BQ_TABLES["Tablas Estrella:<br/>dim_time, dim_websites, dim_vulnerabilities<br/>fact_evaluations, fact_findings"]
+            BQ_DATASET --- BQ_TABLES
+        end
+
+        %% RELACIONES INTERNAS GCP
+        SCHEDULER ==>|Invoca HTTP OIDC| CR_JOB
+        CR_JOB ==>|Escribe JSON Crudo| GCS_BUCKET
+        CR_JOB ==>|Merge / Append Datos| BQ_DATASET
+        CR_WEB -. Consulta Analitica .-> BQ_DATASET
+        SA_WEB -. Asignada a .-> CR_WEB
+        SA_ETL -. Asignada a .-> CR_JOB
+    end
+
+    %% ─────────────────────────────────────────────────────────────
+    %% ZONA 3: CLIENTES Y USUARIOS
+    %% ─────────────────────────────────────────────────────────────
+    subgraph CLIENTS["3. Clientes y Actores SOC"]
+        direction LR
+        USER["Analistas SOC y Auditores<br/>(Navegador Web / HTTPS)"]
+        PUBLIC_URL["URL Cloud Run Publica<br/>(https://tacna-soc-web-*.run.app)"]
+        USER --> PUBLIC_URL
+        PUBLIC_URL --> CR_WEB
+    end
+
+    %% CONEXION CI/CD A GCP
+    WF_BUILD ==>|1. Compila y Sube Docker| AR
+    WF_BUILD ==>|2. Despliega Version| CR_WEB
+    IAC_CODE ==>|Terraform Apply| GCP
+
+    %% ESTILOS
+    classDef ghStyle fill:#181717,stroke:#6e7681,stroke-width:2px,color:#ffffff;
+    classDef gcpCompute fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#ffffff;
+    classDef gcpStorage fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#ffffff;
+    classDef gcpDwh fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#ffffff;
+    classDef gcpSched fill:#581c87,stroke:#c084fc,stroke-width:2px,color:#ffffff;
+
+    class REPO,WF,WF_BUILD,WF_DOCS,WF_ETL,IAC_CODE,INFRACOST ghStyle;
+    class CR_WEB,CR_JOB,IMG_WEB,IMG_ETL gcpCompute;
+    class GCS_BUCKET gcpStorage;
+    class BQ_DATASET,BQ_TABLES gcpDwh;
+    class SCHEDULER,SA_WEB,SA_ETL gcpSched;
+

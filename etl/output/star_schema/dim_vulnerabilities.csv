@@ -1,0 +1,9 @@
+vulnerability_key,cve_id,name,severity,cvss_score,cvss_vector,attack_vector,attack_complexity,privileges_required,user_interaction,owasp_category,cwe_id,nvd_published_at
+1,"CVE-2023-38408","Remote Code Execution in OpenSSH forwarded agent","Crítica",9.8,"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H","Network","Low","None","None","A06:2021 - Vulnerable Components","CWE-426","2023-07-19T00:00:00Z"
+2,"CVE-2021-44228","Log4Shell RCE in Apache Log4j2","Crítica",10.0,"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Network","Low","None","None","A06:2021 - Vulnerable Components","CWE-502","2021-12-10T00:00:00Z"
+3,"CVE-2023-28252","SQL Injection in Institutional Web Portals","Alta",8.5,"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N","Network","Low","None","None","A03:2021 - Injection","CWE-89","2023-04-12T00:00:00Z"
+4,"CVE-2022-22965","Spring4Shell RCE in Spring Framework Core","Crítica",9.8,"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H","Network","Low","None","None","A06:2021 - Vulnerable Components","CWE-94","2022-04-01T00:00:00Z"
+5,"CVE-2024-21413","Microsoft Outlook Remote Code Execution Flaw","Alta",8.8,"CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H","Network","Low","None","Required","A01:2021 - Broken Access Control","CWE-20","2024-02-13T00:00:00Z"
+6,"CVE-2023-4863","Heap Buffer Overflow in WebP libwebp","Crítica",8.8,"CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H","Network","Low","None","Required","A06:2021 - Vulnerable Components","CWE-787","2023-09-12T00:00:00Z"
+7,"CVE-2023-34362","MOVEit Transfer SQL Injection Vulnerability","Crítica",9.8,"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H","Network","Low","None","None","A03:2021 - Injection","CWE-89","2023-06-02T00:00:00Z"
+8,"CVE-2024-3094","Backdoor in XZ Utils Embedded Compression","Crítica",10.0,"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H","Network","Low","None","None","A06:2021 - Vulnerable Components","CWE-506","2024-03-29T00:00:00Z"

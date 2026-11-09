@@ -1,0 +1,16 @@
+[
+  {"name": "website_key", "type": "INT64", "mode": "REQUIRED", "description": "Clave subrogada"},
+  {"name": "website_id", "type": "STRING", "mode": "REQUIRED", "description": "ID natural de activo"},
+  {"name": "name", "type": "STRING", "mode": "REQUIRED", "description": "Nombre de portal"},
+  {"name": "institution", "type": "STRING", "mode": "REQUIRED", "description": "Entidad"},
+  {"name": "category", "type": "STRING", "mode": "REQUIRED", "description": "Sector"},
+  {"name": "url", "type": "STRING", "mode": "REQUIRED", "description": "URL"},
+  {"name": "ip_address", "type": "STRING", "mode": "NULLABLE", "description": "IP"},
+  {"name": "status", "type": "STRING", "mode": "REQUIRED", "description": "Estado"},
+  {"name": "current_risk_level", "type": "STRING", "mode": "NULLABLE", "description": "Nivel de riesgo"},
+  {"name": "current_risk_score", "type": "FLOAT64", "mode": "NULLABLE", "description": "Risk Score"},
+  {"name": "valid_from", "type": "TIMESTAMP", "mode": "REQUIRED", "description": "Inicio vigencia"},
+  {"name": "valid_to", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Fin vigencia"},
+  {"name": "is_current", "type": "BOOL", "mode": "REQUIRED", "description": "Es actual"}
+]
+

@@ -1,0 +1,69 @@
+sequenceDiagram
+    autonumber
+    title Tacna SOC - Proceso ETL Automatizado Periodico (Extract, Transform, Load)
+
+    actor Admin as Administrador / DevOps
+    participant Cron as Cloud Scheduler (GCP)
+    participant Runner as Cloud Run Job (Python ETL)
+    participant OLTP as Supabase PostgreSQL
+    participant Lake as Cloud Storage (Data Lake)
+    participant DWH as Google BigQuery (DWH)
+    participant Audit as Bitacora de Auditoria
+
+    %% FASE DE DISPARO
+    alt Disparo Programado (Diario 02:00 UTC)
+        Cron->>Runner: Trigger via Cloud Scheduler HTTP POST
+    else Disparo Manual / CI-CD
+        Admin->>Runner: Workflow Dispatch / CLI con --dry-run
+    end
+
+    activate Runner
+    Runner->>Audit: Registrar inicio de lote ETL (run_id, timestamp)
+
+    %% FASE EXTRACT
+    rect rgb(20, 30, 50)
+        note over Runner,OLTP: FASE 1: EXTRACT (Extraccion Incremental)
+        Runner->>Runner: Consultar marca de agua previa (watermark TIMESTAMPTZ)
+        Runner->>OLTP: SELECT * FROM websites, evaluations, findings, analyses WHERE updated_at >= watermark
+        alt Conexion Supabase Activa
+            OLTP-->>Runner: Devolver registros operacionales incrementales (JSON)
+        else Fallback / Demostracion Offline (--dry-run)
+            Runner->>Runner: Cargar dataset semilla homologado multi-anual (2025-2026)
+        end
+    end
+
+    %% FASE TRANSFORM
+    rect rgb(30, 20, 50)
+        note over Runner: FASE 2: TRANSFORM (Limpieza y Modelo Dimensional Estrella)
+        Runner->>Runner: 1. Limpieza y validacion de tipos (TIMESTAMPTZ, integers, URLs)
+        Runner->>Runner: 2. Generar dim_time (date_key YYYYMMDD, ano, mes, dia, trimestre, semestre)
+        Runner->>Runner: 3. Normalizar dim_websites (surrogate key, sector regional, estado)
+        Runner->>Runner: 4. Normalizar dim_vulnerabilities (surrogate key, cwe, cve, OWASP Top 10)
+        Runner->>Runner: 5. Construir fact_evaluations (FKs dimensionales, metricas de score y duracion)
+        Runner->>Runner: 6. Construir fact_findings (FKs dimensionales, severidad, estado remediacion)
+    end
+
+    %% FASE LOAD
+    rect rgb(10, 40, 30)
+        note over Runner,DWH: FASE 3: LOAD (Carga Dual: Lake Inmutable + DWH Estrella)
+        
+        %% Carga Lake
+        Runner->>Lake: PUT gs://tacna-soc-raw-data-lake/raw/year=YYYY/month=MM/batch.json
+        Lake-->>Runner: 200 OK (Data Lake Crudo Respaldado)
+
+        %% Carga DWH
+        Runner->>DWH: MERGE INTO dim_websites, dim_vulnerabilities, dim_time
+        Runner->>DWH: INSERT INTO fact_evaluations, fact_findings (Particionado diario)
+        DWH-->>Runner: Operacion DWH Exitosa (Tablas estrella actualizadas)
+    end
+
+    %% MODO DEMO / EXPORT LOCAL
+    opt Si modo es --dry-run o entorno local
+        Runner->>Runner: Exportar archivos locales CSV y JSON en etl/output/star_schema/
+    end
+
+    %% CIERRE Y AUDITORIA
+    Runner->>Audit: Registrar fin exitoso de ejecucion, volumen de filas y nuevo watermark
+    Runner-->>Cron: 200 OK - Job Terminado Exitosamente
+    deactivate Runner
+

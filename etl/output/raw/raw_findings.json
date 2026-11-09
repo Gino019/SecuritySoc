@@ -1,0 +1,110 @@
+[
+  {
+    "id": "find-001",
+    "evaluation_id": "eval-2025-01",
+    "cve_id": "CVE-2023-38408",
+    "type": "DAST_NETWORK",
+    "name": "OpenSSH Agent Forwarding RCE",
+    "severity": "CRITICAL",
+    "cwe": "CWE-426",
+    "detected_at": "2025-02-14T10:32:00Z",
+    "is_mitigated": true,
+    "days_to_remediate": 2.5
+  },
+  {
+    "id": "find-002",
+    "evaluation_id": "eval-2025-01",
+    "cve_id": "CVE-2023-28252",
+    "type": "DAST_WEB",
+    "name": "SQL Injection en portal de consultas",
+    "severity": "HIGH",
+    "cwe": "CWE-89",
+    "detected_at": "2025-02-14T10:35:00Z",
+    "is_mitigated": true,
+    "days_to_remediate": 4.1
+  },
+  {
+    "id": "find-003",
+    "evaluation_id": "eval-2025-04",
+    "cve_id": "CVE-2021-44228",
+    "type": "DAST_CODE",
+    "name": "Log4Shell en citas médicas",
+    "severity": "CRITICAL",
+    "cwe": "CWE-502",
+    "detected_at": "2025-06-30T11:25:00Z",
+    "is_mitigated": true,
+    "days_to_remediate": 1.8
+  },
+  {
+    "id": "find-004",
+    "evaluation_id": "eval-2025-07",
+    "cve_id": "CVE-2023-34362",
+    "type": "DAST_WEB",
+    "name": "MOVEit Transfer SQLi aduanas",
+    "severity": "CRITICAL",
+    "cwe": "CWE-89",
+    "detected_at": "2025-11-20T14:45:00Z",
+    "is_mitigated": true,
+    "days_to_remediate": 3.0
+  },
+  {
+    "id": "find-005",
+    "evaluation_id": "eval-2026-01",
+    "cve_id": "CVE-2022-22965",
+    "type": "DAST_APP",
+    "name": "Spring4Shell en tasas regionales",
+    "severity": "CRITICAL",
+    "cwe": "CWE-94",
+    "detected_at": "2026-01-15T09:20:00Z",
+    "is_mitigated": true,
+    "days_to_remediate": 2.0
+  },
+  {
+    "id": "find-006",
+    "evaluation_id": "eval-2026-03",
+    "cve_id": "CVE-2023-28252",
+    "type": "DAST_WEB",
+    "name": "SQLi resoluciones DIRESA",
+    "severity": "HIGH",
+    "cwe": "CWE-89",
+    "detected_at": "2026-03-12T14:05:00Z",
+    "is_mitigated": true,
+    "days_to_remediate": 5.2
+  },
+  {
+    "id": "find-007",
+    "evaluation_id": "eval-2026-06",
+    "cve_id": "CVE-2024-21413",
+    "type": "DAST_ACCESS",
+    "name": "Broken Access Control EPS",
+    "severity": "HIGH",
+    "cwe": "CWE-20",
+    "detected_at": "2026-06-22T08:50:00Z",
+    "is_mitigated": true,
+    "days_to_remediate": 3.8
+  },
+  {
+    "id": "find-008",
+    "evaluation_id": "eval-2026-09",
+    "cve_id": "CVE-2024-3094",
+    "type": "DAST_SYS",
+    "name": "Backdoor XZ Utils DIRESA",
+    "severity": "CRITICAL",
+    "cwe": "CWE-506",
+    "detected_at": "2026-09-30T11:50:00Z",
+    "is_mitigated": false,
+    "days_to_remediate": null
+  },
+  {
+    "id": "find-009",
+    "evaluation_id": "eval-2026-11",
+    "cve_id": "CVE-2023-38408",
+    "type": "DAST_NETWORK",
+    "name": "OpenSSH forwarding perimetral GRT",
+    "severity": "CRITICAL",
+    "cwe": "CWE-426",
+    "detected_at": "2026-10-24T08:35:00Z",
+    "is_mitigated": false,
+    "days_to_remediate": null
+  }
+]

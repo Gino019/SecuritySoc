@@ -1,0 +1,84 @@
+name: Documentation - Mermaid Diagrams & Technical Manuals
+
+on:
+  push:
+    paths:
+      - 'docs/diagrams/**'
+      - 'scripts/**'
+      - 'etl/sql/**'
+      - 'infra/COST_REPORT.md'
+      - '.github/workflows/generate-docs.yml'
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-docs:
+    name: Compile Diagrams & Assemble Technical Manuals
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout del Repositorio
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 2. Configurar Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 3. Instalar Mermaid CLI
+        run: |
+          npm install -g @mermaid-js/mermaid-cli
+
+      - name: 4. Crear Carpetas de Destino para Imágenes
+        run: |
+          mkdir -p docs/diagrams/img
+          mkdir -p media/diagrams
+
+      - name: 5. Compilar Diagramas Mermaid (.mmd -> .svg / .png)
+        run: |
+          echo "Compilando diagramas Mermaid..."
+          
+          # 1. Arquitectura DWH & Lake
+          mmdc -i docs/diagrams/01-arquitectura-dwh-datalake.mmd -o docs/diagrams/img/01-arquitectura-dwh-datalake.svg -b transparent
+          mmdc -i docs/diagrams/01-arquitectura-dwh-datalake.mmd -o media/diagrams/01-arquitectura-dwh-datalake.png -b white -s 2
+
+          # 2. Proceso ETL Automatizado
+          mmdc -i docs/diagrams/02-proceso-automatizado-etl.mmd -o docs/diagrams/img/02-proceso-automatizado-etl.svg -b transparent
+          mmdc -i docs/diagrams/02-proceso-automatizado-etl.mmd -o media/diagrams/02-proceso-automatizado-etl.png -b white -s 2
+
+          # 3. Infraestructura Cloud e IaC
+          mmdc -i docs/diagrams/03-infraestructura-cloud-iac.mmd -o docs/diagrams/img/03-infraestructura-cloud-iac.svg -b transparent
+          mmdc -i docs/diagrams/03-infraestructura-cloud-iac.mmd -o media/diagrams/03-infraestructura-cloud-iac.png -b white -s 2
+
+          echo "✅ Todos los diagramas compilados exitosamente en SVG y PNG."
+
+      - name: 6. Enblasar y Generar Manuales Técnicos
+        run: |
+          node scripts/generate-manuals.mjs
+
+      - name: 7. Subir Artefactos de Documentación
+        uses: actions/upload-artifact@v4
+        with:
+          name: tacna-soc-technical-manuals-and-diagrams
+          path: |
+            docs/manuals/
+            docs/diagrams/img/
+            media/diagrams/
+
+      - name: 8. Auto-Commit de Diagramas y Manuales Compilados
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/manuals/ docs/diagrams/img/ media/diagrams/ || true
+          if git diff --staged --quiet; then
+            echo "No hay cambios pendientes de documentacion para commitear."
+          else
+            git commit -m "docs(ci): auto-compilacion de diagramas mermaid y manuales tecnicos [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+

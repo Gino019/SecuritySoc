@@ -1,0 +1,14 @@
+[
+  {"name": "time_key", "type": "INT64", "mode": "REQUIRED", "description": "Clave subrogada YYYYMMDD"},
+  {"name": "calendar_date", "type": "DATE", "mode": "REQUIRED", "description": "Fecha calendario"},
+  {"name": "year", "type": "INT64", "mode": "REQUIRED", "description": "Año"},
+  {"name": "quarter", "type": "INT64", "mode": "REQUIRED", "description": "Trimestre (1-4)"},
+  {"name": "month", "type": "INT64", "mode": "REQUIRED", "description": "Mes numérico (1-12)"},
+  {"name": "month_name", "type": "STRING", "mode": "REQUIRED", "description": "Nombre del mes"},
+  {"name": "day", "type": "INT64", "mode": "REQUIRED", "description": "Día del mes (1-31)"},
+  {"name": "day_of_week", "type": "INT64", "mode": "REQUIRED", "description": "Día de la semana (1-7)"},
+  {"name": "day_name", "type": "STRING", "mode": "REQUIRED", "description": "Nombre del día"},
+  {"name": "is_weekend", "type": "BOOL", "mode": "REQUIRED", "description": "Es fin de semana"},
+  {"name": "semester", "type": "INT64", "mode": "REQUIRED", "description": "Semestre (1-2)"}
+]
+

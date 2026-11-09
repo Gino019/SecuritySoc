@@ -1,0 +1,6 @@
+{
+  "name": "Tacna SOC - Gestión de Vulnerabilidades",
+  "description": "Plataforma SOC de gestión de vulnerabilidades, monitoreo de sitios web, reportes ejecutivos, administración de usuarios y auditoría completa de logs del sistema.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

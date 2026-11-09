@@ -1,0 +1,18 @@
+# ====================================================================
+# Terraform: Variables de Ejemplo (terraform.tfvars)
+# Copia este archivo a 'terraform.tfvars' y completa con tus credenciales
+# ====================================================================
+
+project_id         = "tacna-soc-bi-cloud-2026"
+region             = "us-central1" # Usar "southamerica-west1" para baja latencia en Tacna
+environment        = "production"
+dataset_id         = "tacna_soc_dwh"
+lake_bucket_prefix = "tacna-soc-raw-lake"
+
+etl_image          = "gcr.io/tacna-soc-bi-cloud-2026/tacna-soc-etl:latest"
+etl_schedule       = "0 3 * * *" # 03:00 AM todos los días hora de Perú
+time_zone          = "America/Lima"
+
+supabase_url       = "https://moqrfgsgcczcogwhbrsd.supabase.co"
+supabase_key       = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vcXJmZ3NnY2N6Y29nd2hicnNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA1MTM1NDgsImV4cCI6MjEwNjA4OTU0OH0.AzplvueQR7ekAZowcTAe6RDZt97cGc_AZLbaOHOVQfs"
+

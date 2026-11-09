@@ -1,0 +1,16 @@
+[
+  {"name": "vulnerability_key", "type": "INT64", "mode": "REQUIRED", "description": "Clave subrogada"},
+  {"name": "cve_id", "type": "STRING", "mode": "REQUIRED", "description": "CVE ID"},
+  {"name": "name", "type": "STRING", "mode": "REQUIRED", "description": "Nombre"},
+  {"name": "severity", "type": "STRING", "mode": "REQUIRED", "description": "Severidad"},
+  {"name": "cvss_score", "type": "FLOAT64", "mode": "REQUIRED", "description": "Score CVSS"},
+  {"name": "cvss_vector", "type": "STRING", "mode": "NULLABLE", "description": "Vector CVSS"},
+  {"name": "attack_vector", "type": "STRING", "mode": "NULLABLE", "description": "Vector"},
+  {"name": "attack_complexity", "type": "STRING", "mode": "NULLABLE", "description": "Complejidad"},
+  {"name": "privileges_required", "type": "STRING", "mode": "NULLABLE", "description": "Privilegios"},
+  {"name": "user_interaction", "type": "STRING", "mode": "NULLABLE", "description": "Interaccion"},
+  {"name": "owasp_category", "type": "STRING", "mode": "NULLABLE", "description": "OWASP"},
+  {"name": "cwe_id", "type": "STRING", "mode": "NULLABLE", "description": "CWE"},
+  {"name": "nvd_published_at", "type": "TIMESTAMP", "mode": "NULLABLE", "description": "Fecha NVD"}
+]
+

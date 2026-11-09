@@ -1,0 +1,65 @@
+name: ETL Pipeline - Extraction, Transformation & Data Loading
+
+on:
+  schedule:
+    # Ejecucion programada diaria a las 02:00 UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      force_dry_run:
+        description: 'Forzar modo local demo (--dry-run) sin requerir credenciales de GCP'
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  run-etl:
+    name: Run Python ETL Pipeline
+    runs-on: ubuntu-latest
+    env:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+      SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+
+    steps:
+      - name: 1. Checkout del Repositorio
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: 'etl/requirements.txt'
+
+      - name: 3. Instalar Dependencias del ETL
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r etl/requirements.txt
+
+      - name: 4. Ejecución del Pipeline ETL
+        run: |
+          echo "Iniciando ejecución del pipeline ETL de Tacna SOC..."
+          
+          # Determinar si ejecutar en modo dry-run
+          if [ "${{ github.event.inputs.force_dry_run }}" = "false" ] && [ -n "$GCP_PROJECT_ID" ] && [ -n "$GCP_SA_KEY" ]; then
+            echo "Modo Producción Cloud: Conectando a Supabase, GCS y BigQuery..."
+            python etl/main.py
+          else
+            echo "Modo Resiliente / Demo Local: Ejecutando con bandera --dry-run..."
+            python etl/main.py --dry-run
+          fi
+
+      - name: 5. Subir Datasets Generados como Artefactos de la Corrida
+        uses: actions/upload-artifact@v4
+        with:
+          name: etl-star-schema-and-raw-lake-data
+          path: |
+            etl/output/star_schema/
+            etl/output/raw/
+          retention-days: 14
+

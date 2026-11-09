@@ -1,0 +1,118 @@
+graph TD
+    %% ─────────────────────────────────────────────────────────────
+    %% CAPA 1: FUENTES TRANSACCIONALES (OLTP)
+    %% ─────────────────────────────────────────────────────────────
+    subgraph S1["1. Capa de Fuentes Operacionales (OLTP)"]
+        direction TB
+        SB["Supabase Managed PostgreSQL<br/>(Transactional Engine)"]
+        T1["websites (Activos)"]
+        T2["evaluations (Escaneos)"]
+        T3["findings (Hallazgos CWE/CVE)"]
+        T4["analyses (Diagnosticos SOC)"]
+        T5["vulnerability_references"]
+        T6["system_users"]
+        T7["audit_logs (Trazabilidad SHA-256)"]
+        SB --- T1
+        SB --- T2
+        SB --- T3
+        SB --- T4
+        SB --- T5
+        SB --- T6
+        SB --- T7
+    end
+
+    %% ─────────────────────────────────────────────────────────────
+    %% CAPA 2: PROCESAMIENTO Y ORQUESTACION (ETL)
+    %% ─────────────────────────────────────────────────────────────
+    subgraph S2["2. Capa de Orquestacion y Procesamiento ETL"]
+        direction TB
+        CRON["Google Cloud Scheduler<br/>(cron: 0 2 * * * - 02:00 UTC)"]
+        TRIGGER["Cloud Run Job Invoker<br/>(Service Account IAM)"]
+        JOB["Google Cloud Run Job: tacna-soc-etl<br/>(Python 3.12 + Pandas Engine)"]
+        EXTRACT["Extractor Incremental<br/>(TIMESTAMPTZ Watermark)"]
+        TRANSFORM["Transformador Dimensional<br/>(Star Schema Builder)"]
+
+        CRON --> TRIGGER --> JOB
+        JOB --> EXTRACT --> TRANSFORM
+    end
+
+    %% ─────────────────────────────────────────────────────────────
+    %% CAPA 3: DATA LAKE (RAW STORAGE)
+    %% ─────────────────────────────────────────────────────────────
+    subgraph S3["3. Capa Data Lake Raw (Google Cloud Storage)"]
+        direction TB
+        GCS["Bucket: gs://tacna-soc-raw-data-lake<br/>(Standard Storage / Multi-region)"]
+        F_RAW["Respaldo Crudo JSON / Parquet<br/>/raw/year=YYYY/month=MM/day=DD/"]
+        GCS --- F_RAW
+    end
+
+    %% ─────────────────────────────────────────────────────────────
+    %% CAPA 4: DATA WAREHOUSE (BIGQUERY STAR SCHEMA)
+    %% ─────────────────────────────────────────────────────────────
+    subgraph S4["4. Capa Data Warehouse Analitico (BigQuery)"]
+        direction TB
+        DWH["Dataset: tacna_soc_dwh<br/>(Google BigQuery Serverless)"]
+        
+        subgraph DIM["Tablas Dimensionales"]
+            D_TIME["dim_time<br/>(PK: date_key)"]
+            D_WEB["dim_websites<br/>(PK: website_key)"]
+            D_VULN["dim_vulnerabilities<br/>(PK: vulnerability_key)"]
+        end
+
+        subgraph FACT["Tablas de Hechos"]
+            F_EVAL["fact_evaluations<br/>(Particion: evaluation_date)<br/>(Cluster: sector, grade)"]
+            F_FIND["fact_findings<br/>(Particion: finding_date)<br/>(Cluster: severity, category)"]
+        end
+
+        DWH --- DIM
+        DWH --- FACT
+        F_EVAL -. FK .-> D_TIME
+        F_EVAL -. FK .-> D_WEB
+        F_FIND -. FK .-> D_TIME
+        F_FIND -. FK .-> D_WEB
+        F_FIND -. FK .-> D_VULN
+    end
+
+    %% ─────────────────────────────────────────────────────────────
+    %% CAPA 5: CONSUMO E INTELIGENCIA DE NEGOCIOS (BI)
+    %% ─────────────────────────────────────────────────────────────
+    subgraph S5["5. Capa de Presentacion e Inteligencia de Negocios (BI)"]
+        direction TB
+        APP["Tacna SOC Web App<br/>(React 19 + Express en Cloud Run)"]
+        F_BAR["Barra de Filtros Multidimensional:<br/>Ano (2025/2026) | Mes (01-12) | Dia (01-31) | Sector"]
+        
+        R1["Reporte 1: Tendencia Historica de Postura"]
+        R2["Reporte 2: Matriz de Severidad"]
+        R3["Reporte 3: Ranking de Exposicion Regional"]
+        R4["Reporte 4: Top CVEs y OWASP Top 10"]
+        R5["Reporte 5: Eficacia y MTTR"]
+        R6["Reporte 6: Bitacora de Auditoria SOC"]
+        
+        APP --> F_BAR
+        F_BAR --> R1
+        F_BAR --> R2
+        F_BAR --> R3
+        F_BAR --> R4
+        F_BAR --> R5
+        F_BAR --> R6
+    end
+
+    %% CONEXIONES INTER-CAPAS
+    SB ==>|1. Extraccion incremental REST/Postgres| EXTRACT
+    TRANSFORM ==>|2. Carga Inmutable Cruda| GCS
+    TRANSFORM ==>|3. Carga Dimensional Merge/Append| DWH
+    DWH ==>|4. Consultas Analiticas / Exportaciones| APP
+
+    %% ESTILOS
+    classDef sourceStyle fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
+    classDef etlStyle fill:#0f172a,stroke:#a855f7,stroke-width:2px,color:#f8fafc;
+    classDef lakeStyle fill:#1e1b4b,stroke:#6366f1,stroke-width:2px,color:#f8fafc;
+    classDef dwhStyle fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#f8fafc;
+    classDef biStyle fill:#701a75,stroke:#f43f5e,stroke-width:2px,color:#f8fafc;
+
+    class SB,T1,T2,T3,T4,T5,T6,T7 sourceStyle;
+    class CRON,TRIGGER,JOB,EXTRACT,TRANSFORM etlStyle;
+    class GCS,F_RAW lakeStyle;
+    class DWH,D_TIME,D_WEB,D_VULN,F_EVAL,F_FIND dwhStyle;
+    class APP,F_BAR,R1,R2,R3,R4,R5,R6 biStyle;
+

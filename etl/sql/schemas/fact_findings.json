@@ -1,0 +1,17 @@
+[
+  {"name": "finding_key", "type": "INT64", "mode": "REQUIRED", "description": "Clave subrogada"},
+  {"name": "finding_id", "type": "STRING", "mode": "REQUIRED", "description": "ID hallazgo"},
+  {"name": "evaluation_key", "type": "INT64", "mode": "REQUIRED", "description": "FK fact_evaluations"},
+  {"name": "website_key", "type": "INT64", "mode": "REQUIRED", "description": "FK dim_websites"},
+  {"name": "vulnerability_key", "type": "INT64", "mode": "NULLABLE", "description": "FK dim_vulnerabilities"},
+  {"name": "time_key", "type": "INT64", "mode": "REQUIRED", "description": "FK dim_time"},
+  {"name": "type", "type": "STRING", "mode": "REQUIRED", "description": "Tipo de escaneo"},
+  {"name": "severity", "type": "STRING", "mode": "REQUIRED", "description": "Severidad"},
+  {"name": "severity_weight", "type": "INT64", "mode": "REQUIRED", "description": "Peso numerico"},
+  {"name": "cwe", "type": "STRING", "mode": "NULLABLE", "description": "CWE"},
+  {"name": "detected_at", "type": "TIMESTAMP", "mode": "REQUIRED", "description": "Fecha de deteccion"},
+  {"name": "is_mitigated", "type": "BOOL", "mode": "REQUIRED", "description": "Mitigado"},
+  {"name": "days_to_remediate", "type": "FLOAT64", "mode": "NULLABLE", "description": "Dias para mitigar (MTTR)"},
+  {"name": "load_timestamp", "type": "TIMESTAMP", "mode": "REQUIRED", "description": "Timestamp ETL"}
+]
+
