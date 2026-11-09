@@ -5,7 +5,7 @@
     "website_key": 1,
     "time_key": 20250214,
     "target_domain": "regiontacna.gob.pe",
-    "evaluated_at": "2025-02-14T10:30:00Z",
+    "evaluated_at": "2025-02-14T10:30:00+00:00",
     "score": "D",
     "score_numeric": 40.0,
     "critical_count": 3,
@@ -15,7 +15,7 @@
     "total_findings": 41,
     "risk_score": 100.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 2,
@@ -23,7 +23,7 @@
     "website_key": 2,
     "time_key": 20250322,
     "target_domain": "mptacna.gob.pe",
-    "evaluated_at": "2025-03-22T15:00:00Z",
+    "evaluated_at": "2025-03-22T15:00:00+00:00",
     "score": "C",
     "score_numeric": 60.0,
     "critical_count": 1,
@@ -33,7 +33,7 @@
     "total_findings": 24,
     "risk_score": 67.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 3,
@@ -41,7 +41,7 @@
     "website_key": 3,
     "time_key": 20250518,
     "target_domain": "unjbg.edu.pe",
-    "evaluated_at": "2025-05-18T09:45:00Z",
+    "evaluated_at": "2025-05-18T09:45:00+00:00",
     "score": "B",
     "score_numeric": 75.0,
     "critical_count": 0,
@@ -51,7 +51,7 @@
     "total_findings": 14,
     "risk_score": 32.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 4,
@@ -59,7 +59,7 @@
     "website_key": 4,
     "time_key": 20250630,
     "target_domain": "diresatacna.gob.pe",
-    "evaluated_at": "2025-06-30T11:20:00Z",
+    "evaluated_at": "2025-06-30T11:20:00+00:00",
     "score": "F",
     "score_numeric": 20.0,
     "critical_count": 5,
@@ -69,7 +69,7 @@
     "total_findings": 50,
     "risk_score": 100.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 5,
@@ -77,7 +77,7 @@
     "website_key": 7,
     "time_key": 20250812,
     "target_domain": "epstacna.com.pe",
-    "evaluated_at": "2025-08-12T16:15:00Z",
+    "evaluated_at": "2025-08-12T16:15:00+00:00",
     "score": "C",
     "score_numeric": 60.0,
     "critical_count": 2,
@@ -87,7 +87,7 @@
     "total_findings": 25,
     "risk_score": 84.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 6,
@@ -95,7 +95,7 @@
     "website_key": 6,
     "time_key": 20251004,
     "target_domain": "cmactacna.com.pe",
-    "evaluated_at": "2025-10-04T08:00:00Z",
+    "evaluated_at": "2025-10-04T08:00:00+00:00",
     "score": "A",
     "score_numeric": 100.0,
     "critical_count": 0,
@@ -105,7 +105,7 @@
     "total_findings": 6,
     "risk_score": 10.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 7,
@@ -113,7 +113,7 @@
     "website_key": 8,
     "time_key": 20251120,
     "target_domain": "zofratacna.com.pe",
-    "evaluated_at": "2025-11-20T14:40:00Z",
+    "evaluated_at": "2025-11-20T14:40:00+00:00",
     "score": "D",
     "score_numeric": 40.0,
     "critical_count": 3,
@@ -123,7 +123,7 @@
     "total_findings": 33,
     "risk_score": 100.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 8,
@@ -131,7 +131,7 @@
     "website_key": 1,
     "time_key": 20260115,
     "target_domain": "regiontacna.gob.pe",
-    "evaluated_at": "2026-01-15T09:15:00Z",
+    "evaluated_at": "2026-01-15T09:15:00+00:00",
     "score": "C",
     "score_numeric": 60.0,
     "critical_count": 2,
@@ -141,7 +141,7 @@
     "total_findings": 30,
     "risk_score": 94.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 9,
@@ -149,7 +149,7 @@
     "website_key": 2,
     "time_key": 20260218,
     "target_domain": "mptacna.gob.pe",
-    "evaluated_at": "2026-02-18T11:30:00Z",
+    "evaluated_at": "2026-02-18T11:30:00+00:00",
     "score": "B",
     "score_numeric": 75.0,
     "critical_count": 1,
@@ -159,7 +159,7 @@
     "total_findings": 18,
     "risk_score": 52.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 10,
@@ -167,7 +167,7 @@
     "website_key": 4,
     "time_key": 20260312,
     "target_domain": "diresatacna.gob.pe",
-    "evaluated_at": "2026-03-12T14:00:00Z",
+    "evaluated_at": "2026-03-12T14:00:00+00:00",
     "score": "D",
     "score_numeric": 40.0,
     "critical_count": 4,
@@ -177,7 +177,7 @@
     "total_findings": 37,
     "risk_score": 100.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 11,
@@ -185,7 +185,7 @@
     "website_key": 3,
     "time_key": 20260420,
     "target_domain": "unjbg.edu.pe",
-    "evaluated_at": "2026-04-20T10:00:00Z",
+    "evaluated_at": "2026-04-20T10:00:00+00:00",
     "score": "A",
     "score_numeric": 100.0,
     "critical_count": 0,
@@ -195,7 +195,7 @@
     "total_findings": 8,
     "risk_score": 17.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 12,
@@ -203,7 +203,7 @@
     "website_key": 5,
     "time_key": 20260514,
     "target_domain": "dretacna.gob.pe",
-    "evaluated_at": "2026-05-14T15:20:00Z",
+    "evaluated_at": "2026-05-14T15:20:00+00:00",
     "score": "C",
     "score_numeric": 60.0,
     "critical_count": 1,
@@ -213,7 +213,7 @@
     "total_findings": 19,
     "risk_score": 60.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 13,
@@ -221,7 +221,7 @@
     "website_key": 7,
     "time_key": 20260622,
     "target_domain": "epstacna.com.pe",
-    "evaluated_at": "2026-06-22T08:45:00Z",
+    "evaluated_at": "2026-06-22T08:45:00+00:00",
     "score": "C",
     "score_numeric": 60.0,
     "critical_count": 2,
@@ -231,7 +231,7 @@
     "total_findings": 18,
     "risk_score": 66.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 14,
@@ -239,7 +239,7 @@
     "website_key": 6,
     "time_key": 20260708,
     "target_domain": "cmactacna.com.pe",
-    "evaluated_at": "2026-07-08T16:30:00Z",
+    "evaluated_at": "2026-07-08T16:30:00+00:00",
     "score": "A",
     "score_numeric": 100.0,
     "critical_count": 0,
@@ -249,7 +249,7 @@
     "total_findings": 3,
     "risk_score": 5.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 15,
@@ -257,7 +257,7 @@
     "website_key": 8,
     "time_key": 20260819,
     "target_domain": "zofratacna.com.pe",
-    "evaluated_at": "2026-08-19T13:10:00Z",
+    "evaluated_at": "2026-08-19T13:10:00+00:00",
     "score": "C",
     "score_numeric": 60.0,
     "critical_count": 2,
@@ -267,7 +267,7 @@
     "total_findings": 18,
     "risk_score": 61.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 16,
@@ -275,7 +275,7 @@
     "website_key": 4,
     "time_key": 20260930,
     "target_domain": "diresatacna.gob.pe",
-    "evaluated_at": "2026-09-30T11:45:00Z",
+    "evaluated_at": "2026-09-30T11:45:00+00:00",
     "score": "D",
     "score_numeric": 40.0,
     "critical_count": 4,
@@ -285,7 +285,7 @@
     "total_findings": 18,
     "risk_score": 94.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 17,
@@ -293,7 +293,7 @@
     "website_key": 2,
     "time_key": 20261020,
     "target_domain": "mptacna.gob.pe",
-    "evaluated_at": "2026-10-20T14:15:00Z",
+    "evaluated_at": "2026-10-20T14:15:00+00:00",
     "score": "B",
     "score_numeric": 75.0,
     "critical_count": 1,
@@ -303,7 +303,7 @@
     "total_findings": 6,
     "risk_score": 29.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "evaluation_key": 18,
@@ -311,7 +311,7 @@
     "website_key": 1,
     "time_key": 20261024,
     "target_domain": "regiontacna.gob.pe",
-    "evaluated_at": "2026-10-24T08:30:00Z",
+    "evaluated_at": "2026-10-24T08:30:00+00:00",
     "score": "D",
     "score_numeric": 40.0,
     "critical_count": 3,
@@ -321,6 +321,114 @@
     "total_findings": 15,
     "risk_score": 75.0,
     "status": "Completado",
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
+  },
+  {
+    "evaluation_key": 19,
+    "evaluation_id": "EVAL-306",
+    "website_key": 4,
+    "time_key": 20261109,
+    "target_domain": "diresatacna.gob.pe",
+    "evaluated_at": "2026-11-09T00:36:41.138+00:00",
+    "score": "C",
+    "score_numeric": 60.0,
+    "critical_count": 0,
+    "high_count": 2,
+    "medium_count": 2,
+    "low_count": 2,
+    "total_findings": 6,
+    "risk_score": 20.0,
+    "status": "Completado",
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
+  },
+  {
+    "evaluation_key": 20,
+    "evaluation_id": "EVAL-494",
+    "website_key": 1,
+    "time_key": 20261109,
+    "target_domain": "www.reddit.com",
+    "evaluated_at": "2026-11-09T00:37:14.732+00:00",
+    "score": "A",
+    "score_numeric": 100.0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 2,
+    "total_findings": 2,
+    "risk_score": 2.0,
+    "status": "Completado",
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
+  },
+  {
+    "evaluation_key": 21,
+    "evaluation_id": "EVAL-214",
+    "website_key": 11,
+    "time_key": 20261109,
+    "target_domain": "www.minijuegos.com",
+    "evaluated_at": "2026-11-09T00:38:38.12+00:00",
+    "score": "C",
+    "score_numeric": 60.0,
+    "critical_count": 0,
+    "high_count": 2,
+    "medium_count": 2,
+    "low_count": 2,
+    "total_findings": 6,
+    "risk_score": 20.0,
+    "status": "Completado",
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
+  },
+  {
+    "evaluation_key": 22,
+    "evaluation_id": "EVAL-216",
+    "website_key": 4,
+    "time_key": 20261109,
+    "target_domain": "diresatacna.gob.pe",
+    "evaluated_at": "2026-11-09T00:45:21.533+00:00",
+    "score": "C",
+    "score_numeric": 60.0,
+    "critical_count": 0,
+    "high_count": 2,
+    "medium_count": 2,
+    "low_count": 2,
+    "total_findings": 6,
+    "risk_score": 20.0,
+    "status": "Completado",
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
+  },
+  {
+    "evaluation_key": 23,
+    "evaluation_id": "EVAL-749",
+    "website_key": 12,
+    "time_key": 20261109,
+    "target_domain": "zenodo.org",
+    "evaluated_at": "2026-11-09T01:16:05.904+00:00",
+    "score": "A",
+    "score_numeric": 100.0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "total_findings": 0,
+    "risk_score": 0.0,
+    "status": "Completado",
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
+  },
+  {
+    "evaluation_key": 24,
+    "evaluation_id": "EVAL-377",
+    "website_key": 13,
+    "time_key": 20261109,
+    "target_domain": "4chan.org",
+    "evaluated_at": "2026-11-09T01:16:46.772+00:00",
+    "score": "C",
+    "score_numeric": 60.0,
+    "critical_count": 0,
+    "high_count": 2,
+    "medium_count": 0,
+    "low_count": 0,
+    "total_findings": 2,
+    "risk_score": 12.0,
+    "status": "Completado",
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   }
 ]

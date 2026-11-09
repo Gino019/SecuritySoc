@@ -12,7 +12,7 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-426",
-    "nvd_published_at": "2023-07-19T00:00:00Z"
+    "nvd_published_at": "2023-07-19T00:00:00+00:00"
   },
   {
     "vulnerability_key": 2,
@@ -27,7 +27,7 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-502",
-    "nvd_published_at": "2021-12-10T00:00:00Z"
+    "nvd_published_at": "2021-12-10T00:00:00+00:00"
   },
   {
     "vulnerability_key": 3,
@@ -42,7 +42,7 @@
     "user_interaction": "None",
     "owasp_category": "A03:2021 - Injection",
     "cwe_id": "CWE-89",
-    "nvd_published_at": "2023-04-12T00:00:00Z"
+    "nvd_published_at": "2023-04-12T00:00:00+00:00"
   },
   {
     "vulnerability_key": 4,
@@ -57,7 +57,7 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-94",
-    "nvd_published_at": "2022-04-01T00:00:00Z"
+    "nvd_published_at": "2022-04-01T00:00:00+00:00"
   },
   {
     "vulnerability_key": 5,
@@ -72,7 +72,7 @@
     "user_interaction": "Required",
     "owasp_category": "A01:2021 - Broken Access Control",
     "cwe_id": "CWE-20",
-    "nvd_published_at": "2024-02-13T00:00:00Z"
+    "nvd_published_at": "2024-02-13T00:00:00+00:00"
   },
   {
     "vulnerability_key": 6,
@@ -87,7 +87,7 @@
     "user_interaction": "Required",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-787",
-    "nvd_published_at": "2023-09-12T00:00:00Z"
+    "nvd_published_at": "2023-09-12T00:00:00+00:00"
   },
   {
     "vulnerability_key": 7,
@@ -102,7 +102,7 @@
     "user_interaction": "None",
     "owasp_category": "A03:2021 - Injection",
     "cwe_id": "CWE-89",
-    "nvd_published_at": "2023-06-02T00:00:00Z"
+    "nvd_published_at": "2023-06-02T00:00:00+00:00"
   },
   {
     "vulnerability_key": 8,
@@ -117,6 +117,6 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-506",
-    "nvd_published_at": "2024-03-29T00:00:00Z"
+    "nvd_published_at": "2024-03-29T00:00:00+00:00"
   }
 ]

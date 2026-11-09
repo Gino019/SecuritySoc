@@ -2,6 +2,7 @@
   {
     "cve_id": "CVE-2023-38408",
     "name": "Remote Code Execution in OpenSSH forwarded agent",
+    "description": "Falla en el mecanismo PKCS#11 de ssh-agent que permite ejecución remota de código en agentes reenviados.",
     "severity": "Crítica",
     "cvss_score": 9.8,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -11,11 +12,15 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-426",
-    "nvd_published_at": "2023-07-19T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2023-07-19T00:00:00+00:00",
+    "created_at": "2025-01-15T10:00:00+00:00"
   },
   {
     "cve_id": "CVE-2021-44228",
     "name": "Log4Shell RCE in Apache Log4j2",
+    "description": "Vulnerabilidad crítica en el procesamiento de expresiones JNDI que permite inyección y ejecución remota sin autenticación.",
     "severity": "Crítica",
     "cvss_score": 10.0,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
@@ -25,11 +30,15 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-502",
-    "nvd_published_at": "2021-12-10T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2021-12-10T00:00:00+00:00",
+    "created_at": "2025-01-15T10:00:00+00:00"
   },
   {
     "cve_id": "CVE-2023-28252",
     "name": "SQL Injection in Institutional Web Portals",
+    "description": "Inyección SQL en parámetros de búsqueda y login que expone tablas confidenciales y contraseñas.",
     "severity": "Alta",
     "cvss_score": 8.5,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
@@ -39,11 +48,15 @@
     "user_interaction": "None",
     "owasp_category": "A03:2021 - Injection",
     "cwe_id": "CWE-89",
-    "nvd_published_at": "2023-04-12T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2023-04-12T00:00:00+00:00",
+    "created_at": "2025-02-01T12:00:00+00:00"
   },
   {
     "cve_id": "CVE-2022-22965",
     "name": "Spring4Shell RCE in Spring Framework Core",
+    "description": "Ejecución remota de código vía binding de parámetros en aplicaciones Java Spring Framework desplegadas en Tomcat.",
     "severity": "Crítica",
     "cvss_score": 9.8,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -53,11 +66,15 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-94",
-    "nvd_published_at": "2022-04-01T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2022-04-01T00:00:00+00:00",
+    "created_at": "2025-03-10T09:00:00+00:00"
   },
   {
     "cve_id": "CVE-2024-21413",
     "name": "Microsoft Outlook Remote Code Execution Flaw",
+    "description": "Omisión de validación de enlaces que permite evasión de vista protegida y ejecución de código arbitrario.",
     "severity": "Alta",
     "cvss_score": 8.8,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
@@ -67,11 +84,15 @@
     "user_interaction": "Required",
     "owasp_category": "A01:2021 - Broken Access Control",
     "cwe_id": "CWE-20",
-    "nvd_published_at": "2024-02-13T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2024-02-13T00:00:00+00:00",
+    "created_at": "2025-04-18T14:30:00+00:00"
   },
   {
     "cve_id": "CVE-2023-4863",
     "name": "Heap Buffer Overflow in WebP libwebp",
+    "description": "Desbordamiento de búfer en decodificador WebP que permite ejecución de código mediante imágenes maliciosas.",
     "severity": "Crítica",
     "cvss_score": 8.8,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
@@ -81,11 +102,15 @@
     "user_interaction": "Required",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-787",
-    "nvd_published_at": "2023-09-12T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2023-09-12T00:00:00+00:00",
+    "created_at": "2025-05-22T08:00:00+00:00"
   },
   {
     "cve_id": "CVE-2023-34362",
     "name": "MOVEit Transfer SQL Injection Vulnerability",
+    "description": "Inyección SQL previa a la autenticación que facilita la exfiltración masiva de bases de datos.",
     "severity": "Crítica",
     "cvss_score": 9.8,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -95,11 +120,15 @@
     "user_interaction": "None",
     "owasp_category": "A03:2021 - Injection",
     "cwe_id": "CWE-89",
-    "nvd_published_at": "2023-06-02T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2023-06-02T00:00:00+00:00",
+    "created_at": "2025-07-14T11:00:00+00:00"
   },
   {
     "cve_id": "CVE-2024-3094",
     "name": "Backdoor in XZ Utils Embedded Compression",
+    "description": "Inyección maliciosa en liblzma que compromete la autenticación SSHd en sistemas Linux.",
     "severity": "Crítica",
     "cvss_score": 10.0,
     "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
@@ -109,6 +138,9 @@
     "user_interaction": "None",
     "owasp_category": "A06:2021 - Vulnerable Components",
     "cwe_id": "CWE-506",
-    "nvd_published_at": "2024-03-29T00:00:00Z"
+    "remediation": [],
+    "sources": [],
+    "nvd_published_at": "2024-03-29T00:00:00+00:00",
+    "created_at": "2025-09-01T15:20:00+00:00"
   }
 ]

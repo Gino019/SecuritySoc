@@ -1,9 +1,14 @@
 website_key,website_id,name,institution,category,url,ip_address,status,current_risk_level,current_risk_score,valid_from,valid_to,is_current
-1,"site-1","Portal Institucional GRT","Gobierno Regional de Tacna","Gobierno","https://regiontacna.gob.pe","190.119.200.45","Activo","Crítico",78.5,"2025-01-15T09:00:00Z",,True
-2,"site-2","Municipalidad Provincial de Tacna","Municipalidad Provincial","Gobierno","https://mptacna.gob.pe","190.119.200.88","Activo","Medio",42.0,"2025-02-10T10:00:00Z",,True
-3,"site-3","Universidad Nacional Jorge Basadre","UNJBG Tacna","Educación","https://unjbg.edu.pe","190.119.200.14","Activo","Bajo",18.2,"2025-03-01T08:30:00Z",,True
-4,"site-4","Dirección Regional de Salud Tacna","DIRESA Tacna","Salud","https://diresatacna.gob.pe","190.119.200.99","Activo","Crítico",85.0,"2025-04-12T11:00:00Z",,True
-5,"site-5","Dirección Regional de Educación Tacna","DRET Tacna","Educación","https://dretacna.gob.pe","190.119.200.112","Activo","Medio",48.0,"2025-05-18T14:20:00Z",,True
-6,"site-6","Caja Municipal de Ahorro y Crédito Tacna","Caja Tacna","Finanzas","https://cmactacna.com.pe","200.48.14.33","Activo","Bajo",12.0,"2025-06-25T16:00:00Z",,True
-7,"site-7","Empresa Prestadora de Servicios Tacna","EPS Tacna","Gobierno","https://epstacna.com.pe","190.119.200.56","Activo","Alto",65.0,"2025-07-20T09:15:00Z",,True
-8,"site-8","Zona Franca de Tacna","ZOFRATACNA","Gobierno","https://zofratacna.com.pe","190.119.200.77","Activo","Alto",58.0,"2025-08-30T10:45:00Z",,True
+1,"site-1","Portal Institucional GRT","Gobierno Regional de Tacna","Gobierno","https://regiontacna.gob.pe","190.119.200.45","Activo","Crítico",78.5,"2025-01-15T09:00:00+00:00",,True
+2,"site-2","Municipalidad Provincial de Tacna","Municipalidad Provincial","Gobierno","https://mptacna.gob.pe","190.119.200.88","Activo","Medio",42.0,"2025-02-10T10:00:00+00:00",,True
+3,"site-3","Universidad Nacional Jorge Basadre","UNJBG Tacna","Educación","https://unjbg.edu.pe","190.119.200.14","Activo","Bajo",18.2,"2025-03-01T08:30:00+00:00",,True
+4,"site-4","Dirección Regional de Salud Tacna","DIRESA Tacna","Salud","https://diresatacna.gob.pe","190.119.200.99","Activo","Crítico",85.0,"2025-04-12T11:00:00+00:00",,True
+5,"site-5","Dirección Regional de Educación Tacna","DRET Tacna","Educación","https://dretacna.gob.pe","190.119.200.112","Activo","Medio",48.0,"2025-05-18T14:20:00+00:00",,True
+6,"site-6","Caja Municipal de Ahorro y Crédito Tacna","Caja Tacna","Finanzas","https://cmactacna.com.pe","200.48.14.33","Activo","Bajo",12.0,"2025-06-25T16:00:00+00:00",,True
+7,"site-7","Empresa Prestadora de Servicios Tacna","EPS Tacna","Gobierno","https://epstacna.com.pe","190.119.200.56","Activo","Alto",65.0,"2025-07-20T09:15:00+00:00",,True
+8,"site-8","Zona Franca de Tacna","ZOFRATACNA","Gobierno","https://zofratacna.com.pe","190.119.200.77","Activo","Alto",58.0,"2025-08-30T10:45:00+00:00",,True
+9,"site-1794180850568","hackerrank","Gobierno Regional de Tacna","Educación","https://www.hackerrank.com/","96.6.193.141","Activo","Bajo",10.0,"2026-11-08T23:34:10.568+00:00",,True
+10,"site-1794184154434","securemonk.io","securemonk.io","Educación","https://securemonk.io/scan","190.239.77.102","Activo","Bajo",25.0,"2026-11-09T00:29:14.434+00:00",,True
+11,"site-1794184190695","www.minijuegos.com","www.minijuegos.com","Educación","https://www.minijuegos.com/juego/mario-kart-64","190.239.77.102","Activo","Bajo",25.0,"2026-11-09T00:29:50.695+00:00",,True
+12,"site-1794186964940","zenodo.org","zenodo.org","Gobierno","https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Al%20Ruedo%2C%20Filosof%C3%ADa%22&l=list&p=1&s=10&sort=bestmatch","190.239.77.102","Activo","Bajo",25.0,"2026-11-09T01:16:04.94+00:00",,True
+13,"site-1794187006444","4chan.org","4chan.org","Gobierno","https://4chan.org/","190.239.77.102","Activo","Bajo",25.0,"2026-11-09T01:16:46.444+00:00",,True

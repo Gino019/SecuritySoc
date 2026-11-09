@@ -232,5 +232,18 @@
     "day_name": "Sábado",
     "is_weekend": true,
     "semester": 2
+  },
+  {
+    "time_key": 20261109,
+    "calendar_date": "2026-11-09",
+    "year": 2026,
+    "quarter": 4,
+    "month": 11,
+    "month_name": "Noviembre",
+    "day": 9,
+    "day_of_week": 1,
+    "day_name": "Lunes",
+    "is_weekend": false,
+    "semester": 2
   }
 ]

@@ -17,3 +17,4 @@ time_key,calendar_date,year,quarter,month,month_name,day,day_of_week,day_name,is
 20260930,"2026-09-30",2026,3,9,"Setiembre",30,3,"Miércoles",False,2
 20261020,"2026-10-20",2026,4,10,"Octubre",20,2,"Martes",False,2
 20261024,"2026-10-24",2026,4,10,"Octubre",24,6,"Sábado",True,2
+20261109,"2026-11-09",2026,4,11,"Noviembre",9,1,"Lunes",False,2

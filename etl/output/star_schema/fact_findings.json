@@ -10,10 +10,10 @@
     "severity": "CRITICAL",
     "severity_weight": 10,
     "cwe": "CWE-426",
-    "detected_at": "2025-02-14T10:32:00Z",
-    "is_mitigated": true,
-    "days_to_remediate": 2.5,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "detected_at": "2025-02-14T10:32:00+00:00",
+    "is_mitigated": false,
+    "days_to_remediate": null,
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 2,
@@ -26,10 +26,10 @@
     "severity": "HIGH",
     "severity_weight": 6,
     "cwe": "CWE-89",
-    "detected_at": "2025-02-14T10:35:00Z",
-    "is_mitigated": true,
-    "days_to_remediate": 4.1,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "detected_at": "2025-02-14T10:35:00+00:00",
+    "is_mitigated": false,
+    "days_to_remediate": null,
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 3,
@@ -42,10 +42,10 @@
     "severity": "CRITICAL",
     "severity_weight": 10,
     "cwe": "CWE-502",
-    "detected_at": "2025-06-30T11:25:00Z",
-    "is_mitigated": true,
-    "days_to_remediate": 1.8,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "detected_at": "2025-06-30T11:25:00+00:00",
+    "is_mitigated": false,
+    "days_to_remediate": null,
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 4,
@@ -58,10 +58,10 @@
     "severity": "CRITICAL",
     "severity_weight": 10,
     "cwe": "CWE-89",
-    "detected_at": "2025-11-20T14:45:00Z",
-    "is_mitigated": true,
-    "days_to_remediate": 3.0,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "detected_at": "2025-11-20T14:45:00+00:00",
+    "is_mitigated": false,
+    "days_to_remediate": null,
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 5,
@@ -74,10 +74,10 @@
     "severity": "CRITICAL",
     "severity_weight": 10,
     "cwe": "CWE-94",
-    "detected_at": "2026-01-15T09:20:00Z",
-    "is_mitigated": true,
-    "days_to_remediate": 2.0,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "detected_at": "2026-01-15T09:20:00+00:00",
+    "is_mitigated": false,
+    "days_to_remediate": null,
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 6,
@@ -90,10 +90,10 @@
     "severity": "HIGH",
     "severity_weight": 6,
     "cwe": "CWE-89",
-    "detected_at": "2026-03-12T14:05:00Z",
-    "is_mitigated": true,
-    "days_to_remediate": 5.2,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "detected_at": "2026-03-12T14:05:00+00:00",
+    "is_mitigated": false,
+    "days_to_remediate": null,
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 7,
@@ -106,10 +106,10 @@
     "severity": "HIGH",
     "severity_weight": 6,
     "cwe": "CWE-20",
-    "detected_at": "2026-06-22T08:50:00Z",
-    "is_mitigated": true,
-    "days_to_remediate": 3.8,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "detected_at": "2026-06-22T08:50:00+00:00",
+    "is_mitigated": false,
+    "days_to_remediate": null,
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 8,
@@ -122,10 +122,10 @@
     "severity": "CRITICAL",
     "severity_weight": 10,
     "cwe": "CWE-506",
-    "detected_at": "2026-09-30T11:50:00Z",
+    "detected_at": "2026-09-30T11:50:00+00:00",
     "is_mitigated": false,
     "days_to_remediate": null,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   },
   {
     "finding_key": 9,
@@ -138,9 +138,9 @@
     "severity": "CRITICAL",
     "severity_weight": 10,
     "cwe": "CWE-426",
-    "detected_at": "2026-10-24T08:35:00Z",
+    "detected_at": "2026-10-24T08:35:00+00:00",
     "is_mitigated": false,
     "days_to_remediate": null,
-    "load_timestamp": "2026-11-09T00:12:08.031990+00:00"
+    "load_timestamp": "2026-11-09T01:44:23.048614+00:00"
   }
 ]

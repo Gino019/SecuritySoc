@@ -15,7 +15,8 @@
     "risk_score": 78.5,
     "risk_level": "Crítico",
     "status": "Activo",
-    "created_at": "2025-01-15T09:00:00Z"
+    "created_at": "2025-01-15T09:00:00+00:00",
+    "updated_at": "2026-10-24T08:30:00+00:00"
   },
   {
     "id": "site-2",
@@ -33,7 +34,8 @@
     "risk_score": 42.0,
     "risk_level": "Medio",
     "status": "Activo",
-    "created_at": "2025-02-10T10:00:00Z"
+    "created_at": "2025-02-10T10:00:00+00:00",
+    "updated_at": "2026-10-20T14:15:00+00:00"
   },
   {
     "id": "site-3",
@@ -51,7 +53,8 @@
     "risk_score": 18.2,
     "risk_level": "Bajo",
     "status": "Activo",
-    "created_at": "2025-03-01T08:30:00Z"
+    "created_at": "2025-03-01T08:30:00+00:00",
+    "updated_at": "2026-10-18T09:00:00+00:00"
   },
   {
     "id": "site-4",
@@ -69,7 +72,8 @@
     "risk_score": 85.0,
     "risk_level": "Crítico",
     "status": "Activo",
-    "created_at": "2025-04-12T11:00:00Z"
+    "created_at": "2025-04-12T11:00:00+00:00",
+    "updated_at": "2026-09-30T11:45:00+00:00"
   },
   {
     "id": "site-5",
@@ -87,7 +91,8 @@
     "risk_score": 48.0,
     "risk_level": "Medio",
     "status": "Activo",
-    "created_at": "2025-05-18T14:20:00Z"
+    "created_at": "2025-05-18T14:20:00+00:00",
+    "updated_at": "2026-09-15T16:20:00+00:00"
   },
   {
     "id": "site-6",
@@ -105,7 +110,8 @@
     "risk_score": 12.0,
     "risk_level": "Bajo",
     "status": "Activo",
-    "created_at": "2025-06-25T16:00:00Z"
+    "created_at": "2025-06-25T16:00:00+00:00",
+    "updated_at": "2026-10-22T17:00:00+00:00"
   },
   {
     "id": "site-7",
@@ -123,7 +129,8 @@
     "risk_score": 65.0,
     "risk_level": "Alto",
     "status": "Activo",
-    "created_at": "2025-07-20T09:15:00Z"
+    "created_at": "2025-07-20T09:15:00+00:00",
+    "updated_at": "2026-08-14T10:10:00+00:00"
   },
   {
     "id": "site-8",
@@ -141,6 +148,102 @@
     "risk_score": 58.0,
     "risk_level": "Alto",
     "status": "Activo",
-    "created_at": "2025-08-30T10:45:00Z"
+    "created_at": "2025-08-30T10:45:00+00:00",
+    "updated_at": "2026-10-05T13:30:00+00:00"
+  },
+  {
+    "id": "site-1794180850568",
+    "name": "hackerrank",
+    "institution": "Gobierno Regional de Tacna",
+    "category": "Educación",
+    "url": "https://www.hackerrank.com/",
+    "ip": "96.6.193.141",
+    "last_evaluation": "Pendiente de Escaneo",
+    "vuln_count": 0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "risk_score": 10.0,
+    "risk_level": "Bajo",
+    "status": "Activo",
+    "created_at": "2026-11-08T23:34:10.568+00:00",
+    "updated_at": "2026-11-08T23:34:10.41226+00:00"
+  },
+  {
+    "id": "site-1794184154434",
+    "name": "securemonk.io",
+    "institution": "securemonk.io",
+    "category": "Educación",
+    "url": "https://securemonk.io/scan",
+    "ip": "190.239.77.102",
+    "last_evaluation": "En Proceso",
+    "vuln_count": 0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "risk_score": 25.0,
+    "risk_level": "Bajo",
+    "status": "Activo",
+    "created_at": "2026-11-09T00:29:14.434+00:00",
+    "updated_at": "2026-11-09T00:29:13.950007+00:00"
+  },
+  {
+    "id": "site-1794184190695",
+    "name": "www.minijuegos.com",
+    "institution": "www.minijuegos.com",
+    "category": "Educación",
+    "url": "https://www.minijuegos.com/juego/mario-kart-64",
+    "ip": "190.239.77.102",
+    "last_evaluation": "En Proceso",
+    "vuln_count": 0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "risk_score": 25.0,
+    "risk_level": "Bajo",
+    "status": "Activo",
+    "created_at": "2026-11-09T00:29:50.695+00:00",
+    "updated_at": "2026-11-09T00:29:50.986847+00:00"
+  },
+  {
+    "id": "site-1794186964940",
+    "name": "zenodo.org",
+    "institution": "zenodo.org",
+    "category": "Gobierno",
+    "url": "https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Al%20Ruedo%2C%20Filosof%C3%ADa%22&l=list&p=1&s=10&sort=bestmatch",
+    "ip": "190.239.77.102",
+    "last_evaluation": "En Proceso",
+    "vuln_count": 0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "risk_score": 25.0,
+    "risk_level": "Bajo",
+    "status": "Activo",
+    "created_at": "2026-11-09T01:16:04.94+00:00",
+    "updated_at": "2026-11-09T01:16:05.01797+00:00"
+  },
+  {
+    "id": "site-1794187006444",
+    "name": "4chan.org",
+    "institution": "4chan.org",
+    "category": "Gobierno",
+    "url": "https://4chan.org/",
+    "ip": "190.239.77.102",
+    "last_evaluation": "En Proceso",
+    "vuln_count": 0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "risk_score": 25.0,
+    "risk_level": "Bajo",
+    "status": "Activo",
+    "created_at": "2026-11-09T01:16:46.444+00:00",
+    "updated_at": "2026-11-09T01:16:46.08008+00:00"
   }
 ]

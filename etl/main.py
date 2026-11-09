@@ -84,9 +84,10 @@ FALLBACK_DATA = {
 
 
 class TacnaSocETL:
-    def __init__(self, dry_run: bool = False, full_refresh: bool = False, output_dir: str = "etl/output"):
+    def __init__(self, dry_run: bool = False, full_refresh: bool = False, offline: bool = False, output_dir: str = "etl/output"):
         self.dry_run = dry_run
         self.full_refresh = full_refresh
+        self.offline = offline
         self.output_dir = output_dir
         self.raw_dir = os.path.join(output_dir, "raw")
         self.star_dir = os.path.join(output_dir, "star_schema")
@@ -96,8 +97,8 @@ class TacnaSocETL:
         os.makedirs(self.star_dir, exist_ok=True)
 
         # Variables de entorno
-        self.supabase_url = os.getenv("SUPABASE_URL", "https://moqrfgsgcczcogwhbrsd.supabase.co")
-        self.supabase_key = os.getenv("SUPABASE_KEY", os.getenv("VITE_SUPABASE_ANON_KEY", ""))
+        self.supabase_url = os.getenv("SUPABASE_URL", "https://zyjgfkqqiefydvevmfqh.supabase.co").rstrip("/")
+        self.supabase_key = os.getenv("SUPABASE_KEY", os.getenv("VITE_SUPABASE_ANON_KEY", "sb_publishable_xBh3bXmfP-oRTKh4NKhXRQ_E5vJE5T2"))
         self.gcp_project = os.getenv("GCP_PROJECT_ID", "tacna-soc-bi-cloud-2026")
         self.gcs_bucket = os.getenv("GCS_LAKE_BUCKET", "tacna-soc-datalake-raw-production")
         self.bq_dataset = os.getenv("BQ_DATASET_ID", "tacna_soc_dwh")
@@ -121,7 +122,7 @@ class TacnaSocETL:
             extracted_rows = []
             supa_table_name = "vulnerability_references" if table == "vulnerabilities" else table
 
-            if self.supabase_key and not self.dry_run:
+            if self.supabase_key and not self.offline:
                 try:
                     url = f"{self.supabase_url}/rest/v1/{supa_table_name}?select=*"
                     resp = requests.get(url, headers=headers, timeout=10)
@@ -420,15 +421,16 @@ def main():
     parser = argparse.ArgumentParser(description="Pipeline ETL: Supabase -> GCS Data Lake -> BigQuery DWH")
     parser.add_argument("--dry-run", action="store_true", help="Ejecuta extracción y transformación sin requerir credenciales activas de GCP")
     parser.add_argument("--full-refresh", action="store_true", help="Reconstruye y reemplaza todas las tablas del esquema estrella")
+    parser.add_argument("--offline", action="store_true", help="Usa exclusivamente los datos semilla locales sin realizar peticiones de red")
     parser.add_argument("--output-dir", default="etl/output", help="Directorio de destino para archivos generados")
     args = parser.parse_args()
 
     logger.info("====================================================================")
     logger.info("TACNA SOC — INICIANDO PIPELINE ETL DE INTELIGENCIA DE NEGOCIOS")
-    logger.info(f"Parámetros: dry_run={args.dry_run}, full_refresh={args.full_refresh}, output_dir={args.output_dir}")
+    logger.info(f"Parámetros: dry_run={args.dry_run}, full_refresh={args.full_refresh}, offline={args.offline}, output_dir={args.output_dir}")
     logger.info("====================================================================")
 
-    etl = TacnaSocETL(dry_run=args.dry_run, full_refresh=args.full_refresh, output_dir=args.output_dir)
+    etl = TacnaSocETL(dry_run=args.dry_run, full_refresh=args.full_refresh, offline=args.offline, output_dir=args.output_dir)
     etl.extract()
     etl.transform()
     etl.load()
