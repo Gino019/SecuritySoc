@@ -1,7 +1,7 @@
 # ☁️ Manual de Infraestructura como Código (IaC) y Gestión de Costos
 **Sistema**: Tacna SOC — Centro de Operaciones de Seguridad e Inteligencia de Negocios  
 **Curso**: Inteligencia de Negocios 2026 — Universidad Privada de Tacna  
-**Generado Automáticamente**: 2026-11-08
+**Generado Automáticamente**: 2026-11-10
 
 ---
 
@@ -104,6 +104,7 @@ graph TB
     class GCS_BUCKET gcpStorage;
     class BQ_DATASET,BQ_TABLES gcpDwh;
     class SCHEDULER,SA_WEB,SA_ETL gcpSched;
+
 
 ```
 

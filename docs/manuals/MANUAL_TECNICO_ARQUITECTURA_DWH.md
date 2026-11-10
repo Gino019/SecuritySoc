@@ -1,7 +1,7 @@
 # 🏛️ Manual Técnico de Arquitectura Data Warehouse & Data Lake
 **Sistema**: Tacna SOC — Centro de Operaciones de Seguridad e Inteligencia de Negocios  
 **Curso**: Inteligencia de Negocios 2026 — Universidad Privada de Tacna  
-**Generado Automáticamente**: 2026-11-08
+**Generado Automáticamente**: 2026-11-10
 
 ---
 
@@ -136,6 +136,7 @@ graph TD
     class GCS,F_RAW lakeStyle;
     class DWH,D_TIME,D_WEB,D_VULN,F_EVAL,F_FIND dwhStyle;
     class APP,F_BAR,R1,R2,R3,R4,R5,R6 biStyle;
+
 
 ```
 
